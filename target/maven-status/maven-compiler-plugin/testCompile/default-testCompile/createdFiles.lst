@@ -1,0 +1,5 @@
+com/utag/phase1/dao/UserDaoImplTest.class
+com/utag/phase1/Phase1ApplicationTests.class
+com/utag/phase1/dao/TagPartDaoImplTest.class
+com/utag/phase1/dao/TagWholeDaoImplTest.class
+com/utag/phase1/util/GsonToolTest.class
