@@ -77,5 +77,25 @@ public class FileTool {
         return false;
     }
 
+    /**
+     * 给出固定文件夹下所有文件名的方法
+     * @param filePath
+     * @return
+     */
+    public static List<String> listPictureName(String filePath){
+        File file = new File(filePath);
+        List<String> list = new ArrayList<>();
+        if(file.isDirectory()){
+            File[] files = file.listFiles();
+            for(int i = 0; i < files.length; i++){
+                if(files[i].isDirectory()){
+                    return listPictureName(files[i].getPath());
+                }
+                list.add(files[i].getName());
+            }
+        }
+        return list;
+    }
+
 
 }

@@ -1,9 +1,9 @@
 package com.utag.phase1.dao.DaoService;
 
+import com.utag.phase1.dao.enumeration.TagType;
 import com.utag.phase1.domain.Task;
-
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public interface TaskDao {
     /**
@@ -13,27 +13,74 @@ public interface TaskDao {
      * @param requester
      * @return
      */
-    public boolean saveTask(String name, double reward, String requester, String worker, List<String> pictures);
-
+    public boolean saveTask(String name, double reward, String requester, int workerLimit,
+                            String ddl, String description, List<String> pictureList, TagType tagType);
     /**
      * 删除任务
      * @param id
      * @return
      */
-    public boolean deleteTask(int id);
+    boolean deleteTask(int id);
 
     /**
      * 待定
      * @return
      */
-    public boolean updateTask();
+    boolean updateTask(int id, double reward, int workerLimit, String ddl, String description);
 
     /**
-     * 根据名称寻找所有任务
-     * @param user
+     * 领取任务
+     * @param id
+     * @param worker
      * @return
      */
-    public List<Task> listTask(String user);
+    boolean claimTask(int id, String worker);
 
+    /**
+     * 放弃任务
+     * @param id
+     * @param worker
+     * @return
+     */
+    boolean abandonTask(int id, String worker);
 
+    /**
+     * 提交完成的任务
+     * @param id
+     * @param worker
+     * @return
+     */
+    boolean submitTask(int id, String worker);
+
+    /**
+     * 根据发起者名称寻找所有任务
+     * @param requester
+     * @return
+     */
+    List<Task> listTaskByRequester(String requester);
+
+    /**
+     * 根据工人名称寻找所有任务
+     * @param worker
+     * @return
+     */
+    List<Task> listTaskByWorker(String worker);
+
+    /**
+     *  /**
+     * 计算标注的进程
+     * @param id
+     * @param worker
+     * @return
+     */
+    double calculateProcess(int id, String worker);
+
+    /**
+     * 更新进度信息
+     * @param processMap
+     * @param worker
+     * @param val
+     * @return
+     */
+    boolean updateProcess(Map<String, Double> processMap, String worker, double val);
 }

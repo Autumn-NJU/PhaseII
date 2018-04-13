@@ -13,7 +13,7 @@ public interface TagWholeDao {
      * @param description
      * @return
      */
-    public boolean saveTagWhole(String imageID, String description) throws IOException;
+    boolean saveTagWhole(String imageID, String description) throws IOException;
 
     /**
      * 删除整张图片保存
@@ -21,7 +21,7 @@ public interface TagWholeDao {
      * @param
      * @return
      */
-    public boolean deleteTagWhole(String imageID) throws IOException;
+   boolean deleteTagWhole(String imageID) throws IOException;
 
     /**
      *更新整张图片保存
@@ -29,13 +29,13 @@ public interface TagWholeDao {
      * @param description
      * @return
      */
-    public boolean updateTagWhole(String imageID, String description) throws IOException;
+    boolean updateTagWhole(String imageID, String description) throws IOException;
 
     /**
      * 根据照片id获取标注字符串长度
      * @param imageID
      * @return
      */
-    public int getDescriptionLength(String imageID) throws IOException;
+    int getDescriptionLength(String imageID) throws IOException;
 
 }

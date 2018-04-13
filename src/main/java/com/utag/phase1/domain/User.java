@@ -1,8 +1,10 @@
 package com.utag.phase1.domain;
 
 /**
- * 用户信息的持久类
+ * 用户信息的持久类，思考如何让用户充大会员的方法
  */
+import com.utag.phase1.dao.enumeration.UserType;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -15,6 +17,11 @@ public class User implements Serializable {
      *密码
      */
     private String password;
+
+    /**
+     * 信用值
+     */
+    private int credit;
 
     /**
      * 财产
@@ -31,6 +38,15 @@ public class User implements Serializable {
      */
     private double experience;
 
+    /**
+     * 会员值
+     */
+    private double vip;
+
+    /**
+     * 用户类型
+     */
+    private UserType userType;
 
 
     public User() {
@@ -47,6 +63,18 @@ public class User implements Serializable {
         this.property = property;
         this.level = level;
         this.experience = experience;
+    }
+
+    public User(String username, String password, int credit, double property,
+                int level, double experience, double vip, UserType userType) {
+        this.username = username;
+        this.password = password;
+        this.credit = credit;
+        this.property = property;
+        this.level = level;
+        this.experience = experience;
+        this.vip = vip;
+        this.userType = userType;
     }
 
     public double getProperty() {
@@ -87,5 +115,29 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getCredit() {
+        return credit;
+    }
+
+    public void setCredit(int credit) {
+        this.credit = credit;
+    }
+
+    public double getVip() {
+        return vip;
+    }
+
+    public void setVip(double vip) {
+        this.vip = vip;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 }

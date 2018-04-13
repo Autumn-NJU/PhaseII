@@ -16,7 +16,7 @@ public class TagWholeServiceImpl implements TagWholeService {
     private TagWholeDao tagWholeDao;
 
     @Override
-    public Response<Boolean> saveTagWhole(String imageID, String description) throws IOException{
+    public Response<Boolean> saveTagWhole(String imageID, String description) {
         try {
             tagWholeDao.saveTagWhole(imageID, description);
             return new Response<>(true, "Succeed to save whole tag!");
@@ -27,7 +27,7 @@ public class TagWholeServiceImpl implements TagWholeService {
     }
 
     @Override
-    public Response<Boolean> deleteTagWhole(String imageID) throws IOException{
+    public Response<Boolean> deleteTagWhole(String imageID) {
         try{
             tagWholeDao.deleteTagWhole(imageID);
             return new Response<>(true, "Succeed to delete whole tag!");
@@ -38,7 +38,7 @@ public class TagWholeServiceImpl implements TagWholeService {
     }
 
     @Override
-    public Response<Boolean> updateTagWhole(String imageID, String description) throws IOException{
+    public Response<Boolean> updateTagWhole(String imageID, String description) {
         try{
             tagWholeDao.updateTagWhole(imageID, description);
             return new Response<>(true, "Succeed to update whole tag!");
@@ -49,7 +49,7 @@ public class TagWholeServiceImpl implements TagWholeService {
     }
 
     @Override
-    public Response<Integer> getDescriptionLength(String imageID) throws IOException {
+    public Response<Integer> getDescriptionLength(String imageID) {
         try {
             return new Response<>(true, tagWholeDao.getDescriptionLength(imageID), "Succeed " +
                     "to get length!");
@@ -58,4 +58,5 @@ public class TagWholeServiceImpl implements TagWholeService {
             return new Response<>(false, "Fail to get length!");
         }
     }
+
 }

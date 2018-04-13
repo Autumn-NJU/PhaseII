@@ -1,18 +1,32 @@
 package com.utag.phase1.dao;
 
+import com.utag.phase1.dao.DaoService.PictureDao;
 import com.utag.phase1.dao.DaoService.TaskDao;
+import com.utag.phase1.dao.enumeration.TagType;
 import com.utag.phase1.domain.Task;
 import com.utag.phase1.util.DateHelper;
 import com.utag.phase1.util.FileTool;
 import com.utag.phase1.util.GsonTool;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class TaskDaoImpl implements TaskDao{
+
+    @Autowired
+    private PictureDao pictureDao;
+
     private static final String FILE_NAME = "task.json";
+
+
+    /**
+     * 中途放弃的惩罚，暂定为10
+     */
+    private static final int PUNISHMENT = 10;
 
     private ArrayList<Task> init(){
         ArrayList<String> taskList = (ArrayList<String>) FileTool.readFile(FILE_NAME);
@@ -24,20 +38,26 @@ public class TaskDaoImpl implements TaskDao{
     }
 
 
+    private boolean isTaskExist(int id){
+        ArrayList<Task> list = init();
+        for(Task t: list)
+            if(t.getId() == id)
+                return true;
+        return false;
+    }
+
+
     @Override
-    public boolean saveTask(String name, double reward, String requester, String worker, List<String> pictures) {
-        int id = 0;
+    public boolean saveTask(String name, double reward, String requester, int workerLimit,
+                            String ddl, String description, List<String> pictureList,  TagType tagType) {
         int size = init().size();
-
-        if(size == 0)
-            id = 1;
-        else
-            id = init().get(size - 1).getId() + 1;
-
-        String date = DateHelper.getDate();
-        Task task = new Task(id, name, reward, requester, worker, date, pictures);
+        int id = init().size() == 0 ? 1 : init().get(size - 1).getId() + 1;
+        String beginDate = DateHelper.getDate();
+        Task task = new Task(id, name, reward, requester, workerLimit, null,
+                beginDate, ddl, description, null, null, pictureList, tagType);
         String jsonStr = GsonTool.toJson(task);
         return FileTool.writeFile(FILE_NAME, jsonStr);
+
     }
 
     @Override
@@ -57,20 +77,118 @@ public class TaskDaoImpl implements TaskDao{
     }
 
     @Override
-    public boolean updateTask() {
+    public boolean updateTask(int id, double reward, int workerLimit, String ddl, String description) {
+        ArrayList<Task> list = init();
+        ArrayList<String> strList = new ArrayList<>();
+        for(Task t: list){
+            if(t.getId() == id){
+                t.setReward(reward);
+                t.setWorkerLimit(workerLimit);
+                t.setDdl(ddl);
+                t.setDescription(description);
+            }
+            String jsonStr = GsonTool.toJson(t);
+            strList.add(jsonStr);
+        }
+
+        return FileTool.rewriteFile(FILE_NAME, strList);
+    }
+
+    @Override
+    public boolean claimTask(int id, String worker) {
+        ArrayList<Task> list = init();
+        ArrayList<String> strList = new ArrayList<>();
+        ArrayList<String> workerList = new ArrayList<>();
+        for(Task t: list){
+            if(t.getId() == id){
+                if(t.getWorkerList() != null)
+                    workerList = (ArrayList<String>) t.getWorkerList();
+                for(String w: workerList){
+                    if(w.equals(worker))
+                        return false;
+                }
+                workerList.add(worker);
+                t.setWorkerList(workerList);
+            }
+            String jsonStr = GsonTool.toJson(t);
+            strList.add(jsonStr);
+        }
+
+        return FileTool.rewriteFile(FILE_NAME, strList);
+    }
+
+    @Override
+    public boolean abandonTask(int id, String worker) {
+        ArrayList<Task> list = init();
+        ArrayList<String> strList = new ArrayList<>();
+        ArrayList<String> workerList = new ArrayList<>();
+        for(Task t: list){
+            if(t.getId() == id){
+                workerList.remove(worker);
+                t.setWorkerList(workerList);
+                
+            }
+            String jsonStr = GsonTool.toJson(t);
+            strList.add(jsonStr);
+        }
+
+        return FileTool.rewriteFile(FILE_NAME, strList);
+    }
+
+    @Override
+    public boolean submitTask(int id, String worker) {
+
         return false;
     }
 
     @Override
-    public List<Task> listTask(String user) {
-        return null;
+    public List<Task> listTaskByRequester(String requester) {
+        List<Task> list = new ArrayList<>();
+        for(Task t: init()){
+            if(t.getRequester().equals(requester))
+                list.add(t);
+        }
+        return list;
     }
 
-    private boolean isTaskExist(int id){
-        ArrayList<Task> list = init();
-        for(Task t: list)
-            if(t.getId() == id)
+    @Override
+    public List<Task> listTaskByWorker(String worker) {
+        List<Task> list = new ArrayList<>();
+        for(Task t: init()){
+            if(t.getWorkerList() != null){
+                for(String workerStr: t.getWorkerList()) {
+                    if (workerStr.equals(worker)) {
+                        list.add(t);
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+
+    public double calculateProcess(int id, String worker){
+        Task task = new Task();
+        for(Task t: init()){
+            if(t.getId() == id){
+                task = t;
+                break;
+            }
+        }
+        int sum = task.getPictureList().size();
+        int taggedSize = pictureDao.listUntaggedPicture(id, worker).size();
+        return taggedSize * 1.0 / sum;
+    }
+
+    public boolean updateProcess(Map<String, Double> processMap, String worker, double val){
+        for(Map.Entry<String, Double> m: processMap.entrySet()){
+            if(m.getKey().equals(worker)) {
+                m.setValue(val);
                 return true;
+            }
+        }
         return false;
     }
+
+
 }

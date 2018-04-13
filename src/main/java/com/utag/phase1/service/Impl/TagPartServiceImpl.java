@@ -26,7 +26,7 @@ public class TagPartServiceImpl implements TagPartService {
     }
 
     @Override
-    public Response<List<TagPart>> showTagPart(String imageID) throws IOException{
+    public Response<List<TagPart>> showTagPart(String imageID) {
         try{
             return new Response<>(true, tagPartDao.showTagPart(imageID));
         }catch (Exception e){
@@ -36,7 +36,7 @@ public class TagPartServiceImpl implements TagPartService {
     }
 
     @Override
-    public Response<Boolean> deleteTagPart(String imageID)throws IOException {
+    public Response<Boolean> deleteTagPart(String imageID) {
         try{
             tagPartDao.deleteTagPart(imageID);
             return new Response<>(true, "Succeed to delete part tag!");
@@ -48,7 +48,7 @@ public class TagPartServiceImpl implements TagPartService {
 
     @Override
     public Response<Boolean> updateTagPart(String imageID, double x1, double x2,
-                                           double y1, double y2, String description) throws IOException {
+                                           double y1, double y2, String description) {
         try {
             tagPartDao.updateTagPart(imageID, x1, x2, y1, y2, description);
             return new Response<>(true, "Succeed to update the part tag!");

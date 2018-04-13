@@ -16,7 +16,7 @@ public class TagPartDaoImpl implements TagPartDao {
 
     private static final String FILE_NAME = "part_pictures.json";
 
-    private ArrayList<TagPart> init() throws IOException{
+    private ArrayList<TagPart> init() {
         ArrayList<String> imageStrList = (ArrayList<String>) FileTool.readFile(FILE_NAME);
         ArrayList<TagPart> imageList = new ArrayList<>();
 

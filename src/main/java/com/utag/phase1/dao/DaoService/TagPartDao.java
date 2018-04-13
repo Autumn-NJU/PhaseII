@@ -18,8 +18,8 @@ public interface TagPartDao {
      * @param description
      * @return
      */
-    public boolean saveTagPart(String imageID, double x1, double x2, double y1, double y2,
-                               String description) throws IOException;
+    boolean saveTagPart(String imageID, double x1, double x2, double y1, double y2,
+                        String description) throws IOException;
 
 
     /**
@@ -27,14 +27,14 @@ public interface TagPartDao {
      * @param imageID
      * @return
      */
-    public List<TagPart> showTagPart(String imageID) throws IOException;
+    List<TagPart> showTagPart(String imageID) throws IOException;
 
     /**
      * 删除部分标注
      * @param imageID
      * @return
      */
-    public boolean deleteTagPart(String imageID) throws IOException;
+    boolean deleteTagPart(String imageID) throws IOException;
 
 
     /**
@@ -47,8 +47,8 @@ public interface TagPartDao {
      * @param description
      * @return
      */
-    public boolean updateTagPart(String imageID, double x1, double x2, double y1,
-                                 double y2, String description) throws IOException;
+     boolean updateTagPart(String imageID, double x1, double x2, double y1,
+                                     double y2, String description) throws IOException;
 
     /**
      * 根据id和区域坐标得到描述部分长度
@@ -59,6 +59,6 @@ public interface TagPartDao {
      * @param y2
      * @return
      */
-    public int getDescriptionLength(String imageID, double x1, double x2, double y1, double y2) throws IOException;
+    int getDescriptionLength(String imageID, double x1, double x2, double y1, double y2) throws IOException;
 
 }
