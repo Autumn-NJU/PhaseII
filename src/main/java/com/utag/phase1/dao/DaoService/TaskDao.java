@@ -77,10 +77,10 @@ public interface TaskDao {
 
     /**
      * 更新进度信息
-     * @param processMap
+     * @param taskID
      * @param worker
      * @param val
      * @return
      */
-    boolean updateProcess(Map<String, Double> processMap, String worker, double val);
+    boolean updateProcess(int taskID, String worker, double val);
 }

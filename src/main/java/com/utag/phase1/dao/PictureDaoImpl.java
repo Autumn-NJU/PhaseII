@@ -48,7 +48,8 @@ public class PictureDaoImpl implements PictureDao {
             pictureStrList.add(jsonStr);
         }
         double process = taskDao.calculateProcess(taskID, worker);
-        return FileTool.rewriteFile(FILE_NAME, pictureStrList) && taskDao.updateProcess(, worker, process);
+
+        return FileTool.rewriteFile(FILE_NAME, pictureStrList) && taskDao.updateProcess(taskID, worker, process);
     }
 
     @Override

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -167,6 +168,7 @@ public class TaskDaoImpl implements TaskDao{
     }
 
 
+    @Override
     public double calculateProcess(int id, String worker){
         Task task = new Task();
         for(Task t: init()){
@@ -180,15 +182,25 @@ public class TaskDaoImpl implements TaskDao{
         return taggedSize * 1.0 / sum;
     }
 
-    public boolean updateProcess(Map<String, Double> processMap, String worker, double val){
-        for(Map.Entry<String, Double> m: processMap.entrySet()){
-            if(m.getKey().equals(worker)) {
-                m.setValue(val);
-                return true;
+    @Override
+    public boolean updateProcess(int taskID, String worker, double val){
+        Map<String, Double> processMap = new HashMap<>();
+        ArrayList<String> strList = new ArrayList<>();
+        for(Task t: init()){
+            if(t.getId() == taskID) {
+                processMap = t.getProcessMap();
+                for(Map.Entry<String, Double> m: processMap.entrySet()){
+                    if(m.getKey().equals(worker)) {
+                        m.setValue(val);
+                        t.setProcessMap(processMap);
+                    }
+                }
             }
+            String jsonStr = GsonTool.toJson(t);
+            strList.add(jsonStr);
         }
-        return false;
-    }
 
+        return FileTool.rewriteFile(FILE_NAME, strList);
+    }
 
 }
