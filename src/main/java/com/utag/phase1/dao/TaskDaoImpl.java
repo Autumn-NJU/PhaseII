@@ -109,9 +109,9 @@ public class TaskDaoImpl implements TaskDao{
                         return false;
                 }
                 workerList.add(worker);
-                Map<String, Double> processMap = new HashMap<>();
+                Map<String, Double> processMap = t.getProcessMap();
                 processMap.put(worker, .0);
-                Map<String, Boolean> finishMap = new HashMap<>();
+                Map<String, Boolean> finishMap = t.getIsFinishedMap();
                 finishMap.put(worker, false);
                 t.setWorkerList(workerList);
                 t.setProcessMap(processMap);

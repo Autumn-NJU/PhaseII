@@ -34,7 +34,7 @@ public class TaskDaoImplTest {
     @Test
         public void claimTask(){
             assertEquals(false, taskDao.claimTask(1, "worker2"));
-            assertEquals(true, taskDao.claimTask(2, "worker1"));
+            assertEquals(true, taskDao.claimTask(2, "worker3"));
     }
 
     @Test
