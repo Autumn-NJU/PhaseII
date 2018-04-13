@@ -1,0 +1,5 @@
+picture:
+	picture as the key from task to single picture, the picture contains the taskID(int), the worker(String), name of image(string), and the tagged or not(bool).
+
+task:
+	task as the important domain in iteration2, it has the  unique id(int), also the foreign key workerList(List<String>), the worker(String) have the great significance of 
