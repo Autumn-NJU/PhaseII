@@ -28,7 +28,7 @@ public class TagPartDaoImpl implements TagPartDao {
     }
 
     @Override
-    public boolean saveTagPart(String imageID, double x1, double x2, double y1, double y2, String description) throws IOException{
+    public boolean saveTagPart(String imageID, double x1, double x2, double y1, double y2, String description) {
         ArrayList<TagPart> list = init();
         for(TagPart tagPart: list){
             if(tagPart.getImageID().equals(imageID) && ((tagPart.getX1() == x1 &&
@@ -44,7 +44,7 @@ public class TagPartDaoImpl implements TagPartDao {
     }
 
     @Override
-    public List<TagPart> showTagPart(String imageID) throws IOException{
+    public List<TagPart> showTagPart(String imageID) {
         List<TagPart> resultList = new ArrayList<>();
         ArrayList<TagPart> list = init();
 
@@ -56,7 +56,7 @@ public class TagPartDaoImpl implements TagPartDao {
     }
 
     @Override
-    public boolean deleteTagPart(String imageID) throws IOException{
+    public boolean deleteTagPart(String imageID){
         ArrayList<String> resultList = new ArrayList<>();
         ArrayList<TagPart> list = init();
 
@@ -72,7 +72,7 @@ public class TagPartDaoImpl implements TagPartDao {
     }
 
     @Override
-    public boolean updateTagPart(String imageID, double x1, double x2, double y1, double y2, String description) throws IOException {
+    public boolean updateTagPart(String imageID, double x1, double x2, double y1, double y2, String description) {
         ArrayList<String> resultList = new ArrayList<>();
         ArrayList<TagPart> list = init();
 
@@ -96,7 +96,7 @@ public class TagPartDaoImpl implements TagPartDao {
 
 
     @Override
-    public int getDescriptionLength(String imageID, double x1, double x2, double y1, double y2) throws IOException{
+    public int getDescriptionLength(String imageID, double x1, double x2, double y1, double y2) {
         ArrayList<TagPart> list = init();
         for(TagPart tagPart: list){
             if(tagPart.getImageID().equals(imageID) && ((tagPart.getX1() == x1 &&

@@ -99,7 +99,11 @@ public class UserDaoImpl  implements UserDao {
 
     @Override
     public boolean updateProperty(String user, double property) {
+        if(!isUserExist(user))
+            return false;
+
         ArrayList<String> strList = new ArrayList<>();
+
         for(User u: init()){
             if(u.getUsername().equals(user)){
                 u.setProperty(property);
@@ -113,6 +117,9 @@ public class UserDaoImpl  implements UserDao {
 
     @Override
     public boolean bePunished(String user) {
+        if(!isUserExist(user))
+            return false;
+
         ArrayList<String> strList = new ArrayList<>();
         for(User u: init()){
             if(u.getUsername().equals(user)){

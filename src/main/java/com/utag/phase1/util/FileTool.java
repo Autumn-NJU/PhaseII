@@ -16,9 +16,7 @@ public class FileTool {
 
         try {
             String filePath = prefixPath + fileName;
-
             File file = new File(filePath);
-            System.out.println(file.getAbsolutePath());
             FileWriter writer = new FileWriter(file, true);
             PrintWriter printWriter = new PrintWriter(writer);
             printWriter.write(content);
