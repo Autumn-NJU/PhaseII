@@ -5,10 +5,12 @@ import com.utag.phase1.dao.enumeration.TagType;
 import com.utag.phase1.domain.Task;
 import com.utag.phase1.service.TaskService;
 import com.utag.phase1.util.Response;
+import com.utag.phase1.util.TransVO;
 import com.utag.phase1.vo.TaskVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -67,18 +69,45 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Response<Boolean> abandonTask(int id, String worker) {
-        return null;
+       try{
+           taskDao.abandonTask(id, worker);
+           return new Response<>(true, "Succeed to abandon task!");
+       }catch (Exception ex){
+           ex.printStackTrace();
+           return new Response<>(false, "Fail to abandon task!");
+       }
     }
 
     @Override
     public Response<List<TaskVO>> listTaskByRequester(String requester) {
-
-        return null;
+        try {
+            List<TaskVO> list = new ArrayList<>();
+            List<Task> doList = taskDao.listTaskByRequester(requester);
+            for (Task t : doList) {
+                list.add(TransVO.transTaskVO(t));
+            }
+            return new Response<List<TaskVO>>(true, list,
+                    "Succeed to list task by requester!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail to list task by requester!");
+        }
     }
 
     @Override
     public Response<List<TaskVO>> listTaskByWorker(String worker) {
-        return null;
+        try{
+            List<TaskVO> list = new ArrayList<>();
+            List<Task> doList = taskDao.listTaskByWorker(worker);
+            for (Task t : doList) {
+                list.add(TransVO.transTaskVO(t));
+            }
+            return new Response<List<TaskVO>>(true, list,
+                    "Succeed to list task by worker!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail to list task by worker!");
+        }
     }
 
 }
