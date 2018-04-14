@@ -47,18 +47,21 @@ public class PictureDaoImpl implements PictureDao {
             String jsonStr = GsonTool.toJson(p);
             pictureStrList.add(jsonStr);
         }
+        if(taskID == -1)
+            return false;
+
         double process = taskDao.calculateProcess(taskID, worker);
 
         return FileTool.rewriteFile(FILE_NAME, pictureStrList) && taskDao.updateProcess(taskID, worker, process);
     }
 
     @Override
-    public List<Picture> listUntaggedPicture(int taskID, String worker) {
-        List<Picture> list = new ArrayList<>();
+    public List<String> listUntaggedPicture(int taskID, String worker) {
+        List<String> list = new ArrayList<>();
         ArrayList<Picture> pictureList = init();
         for(Picture p: pictureList){
             if(p.getTaskID() == taskID && p.getWorker().equals(worker) && !p.isTagged())
-                list.add(p);
+                list.add(p.getImageID());
         }
         return list;
     }

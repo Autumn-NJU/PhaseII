@@ -1,7 +1,6 @@
 package com.utag.phase1.controller;
 
 import com.utag.phase1.domain.TagPart;
-import com.utag.phase1.service.Impl.TagPartServiceImpl;
 import com.utag.phase1.service.TagPartService;
 import com.utag.phase1.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;

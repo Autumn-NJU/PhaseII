@@ -5,6 +5,7 @@ import com.utag.phase1.dao.enumeration.TagType;
 import com.utag.phase1.domain.Task;
 import com.utag.phase1.service.TaskService;
 import com.utag.phase1.util.Response;
+import com.utag.phase1.vo.TaskVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class TaskServiceImpl implements TaskService {
     private TaskDao taskDao;
 
     @Override
-    public Response saveTask(String name, double reward, String requester, int workerLimit, String ddl,
+    public Response<Boolean> saveTask(String name, double reward, String requester, int workerLimit, String ddl,
                              String description, List<String> pictureList, TagType tagType) {
         try {
             taskDao.saveTask(name, reward, requester, workerLimit, ddl, description, pictureList, tagType);
@@ -29,7 +30,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Response deleteTask(int id) {
+    public Response<Boolean> deleteTask(int id) {
         try{
             taskDao.deleteTask(id);
             return new Response(true, "Succeed to delete task!");
@@ -41,7 +42,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Response updateTask(int id, double reward, int workerLimit, String ddl, String description) {
+    public Response<Boolean> updateTask(int id, double reward, int workerLimit, String ddl, String description) {
         try{
             taskDao.updateTask(id, reward, workerLimit, ddl, description);
             return new Response(true, "Succeed to update task!");
@@ -53,7 +54,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Response claimTask(int id, String worker) {
+    public Response<Boolean> claimTask(int id, String worker) {
         try{
             taskDao.claimTask(id, worker);
             return new Response(true, "Succeed to claim task!");
@@ -65,18 +66,18 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Response abandonTask(int id, String worker) {
+    public Response<Boolean> abandonTask(int id, String worker) {
         return null;
     }
 
     @Override
-    public Response<List<Task>> listTaskByRequester(String requester) {
+    public Response<List<TaskVO>> listTaskByRequester(String requester) {
 
         return null;
     }
 
     @Override
-    public Response<List<Task>> listTaskByWorker(String worker) {
+    public Response<List<TaskVO>> listTaskByWorker(String worker) {
         return null;
     }
 

@@ -1,16 +1,16 @@
-package com.utag.phase1.dao.DaoService;
+package com.utag.phase1.service;
 
-import com.utag.phase1.domain.Picture;
+import com.utag.phase1.util.Response;
 
 import java.util.List;
 
-public interface PictureDao {
+public interface PictureService {
     /**
      * 图片被标注，在标注的同时更新进度信息
      * @param id
      * @return
      */
-    boolean tagPicture(String id);
+    Response<Boolean> tagPicture(String id);
 
     /**
      * 给出所有未标注的图片
@@ -18,6 +18,5 @@ public interface PictureDao {
      * @param worker
      * @return
      */
-    List<String> listUntaggedPicture(int taskID, String worker);
-
+    Response<List<String>> listUntaggedPicture(int taskID, String worker);
 }

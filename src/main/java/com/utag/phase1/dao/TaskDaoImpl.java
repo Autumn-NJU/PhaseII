@@ -2,6 +2,7 @@ package com.utag.phase1.dao;
 
 import com.utag.phase1.dao.DaoService.PictureDao;
 import com.utag.phase1.dao.DaoService.TaskDao;
+import com.utag.phase1.dao.DaoService.UserDao;
 import com.utag.phase1.dao.enumeration.TagType;
 import com.utag.phase1.domain.Task;
 import com.utag.phase1.util.DateHelper;
@@ -21,13 +22,16 @@ public class TaskDaoImpl implements TaskDao{
     @Autowired
     private PictureDao pictureDao;
 
+    @Autowired
+    private UserDao userDao;
+
     private static final String FILE_NAME = "task.json";
 
 
     /**
-     * 中途放弃的惩罚，暂定为10
+     * 中途放弃的惩罚，暂定为20
      */
-    private static final int PUNISHMENT = 10;
+    private static final int PUNISHMENT = 20;
 
     private ArrayList<Task> init(){
         ArrayList<String> taskList = (ArrayList<String>) FileTool.readFile(FILE_NAME);
@@ -57,7 +61,11 @@ public class TaskDaoImpl implements TaskDao{
         Task task = new Task(id, name, reward, requester, workerLimit, null,
                 beginDate, ddl, description, null, null, pictureList, tagType);
         String jsonStr = GsonTool.toJson(task);
-        return FileTool.writeFile(FILE_NAME, jsonStr);
+        /**
+         * 暂定发布任务直接扣除 (单个奖赏 * 人数)
+         */
+        double property = userDao.getUserByName(requester).getProperty() - reward * workerLimit;
+        return FileTool.writeFile(FILE_NAME, jsonStr) && userDao.updateProperty(requester, property);
 
     }
 
@@ -139,13 +147,24 @@ public class TaskDaoImpl implements TaskDao{
             strList.add(jsonStr);
         }
 
-        return FileTool.rewriteFile(FILE_NAME, strList);
+        return FileTool.rewriteFile(FILE_NAME, strList) && userDao.bePunished(worker);
     }
 
     @Override
     public boolean submitTask(int id, String worker) {
+        ArrayList<Task> list = init();
+        ArrayList<String> strList = new ArrayList<>();
+        Map<String, Boolean> map = new HashMap<>();
+        for(Task t: list){
+            if(t.getId() == id){
+               map = t.getIsFinishedMap();
+               map.put(worker, true);
+            }
+            String jsonStr = GsonTool.toJson(t);
+            strList.add(jsonStr);
+        }
 
-        return false;
+        return FileTool.rewriteFile(FILE_NAME, strList);
     }
 
     @Override
