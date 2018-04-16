@@ -1,11 +1,9 @@
 package com.utag.phase1.dao;
 
 import com.utag.phase1.dao.DaoService.PictureDao;
-import com.utag.phase1.dao.DaoService.TaskDao;
 import com.utag.phase1.domain.Picture;
 import com.utag.phase1.util.FileTool;
 import com.utag.phase1.util.GsonTool;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
