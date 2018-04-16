@@ -1,9 +1,7 @@
 package com.utag.phase1.util;
-
 /**
  * 读写文件的工具类，读文件返回list便于将jsonStr 转化为 java bean
  */
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +26,6 @@ public class FileTool {
         }catch (IOException ex){
             ex.printStackTrace();
         }
-
         return false;
     }
 
@@ -76,12 +73,13 @@ public class FileTool {
     }
 
     /**
-     * 给出固定文件夹下所有文件名的方法
-     * @param filePath
+     *给出固定文件夹下所有文件名的方法
+     * @param folderName
      * @return
      */
-    public static List<String> listPictureName(String filePath){
-        File file = new File(filePath);
+    public static List<String> listPictureName(String folderName){
+        String newPrefixPath = "src/main/resources/static/";
+        File file = new File(newPrefixPath + folderName);
         List<String> list = new ArrayList<>();
         if(file.isDirectory()){
             File[] files = file.listFiles();
@@ -89,7 +87,8 @@ public class FileTool {
                 if(files[i].isDirectory()){
                     return listPictureName(files[i].getPath());
                 }
-                list.add(files[i].getName());
+                if(!files[i].getName().startsWith(".")) //兄dei，有隐藏.文件，剔掉
+                    list.add(files[i].getName());
             }
         }
         return list;

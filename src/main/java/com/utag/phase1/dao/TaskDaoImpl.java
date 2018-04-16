@@ -18,12 +18,10 @@ import java.util.Map;
 
 @Repository
 public class TaskDaoImpl implements TaskDao{
-
-    @Autowired
-    private PictureDao pictureDao;
-
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private PictureDao pictureDao;
 
     private static final String FILE_NAME = "task.json";
 
@@ -32,6 +30,7 @@ public class TaskDaoImpl implements TaskDao{
      * 中途放弃的惩罚，暂定为20
      */
     private static final int PUNISHMENT = 20;
+
 
     private ArrayList<Task> init(){
         ArrayList<String> taskList = (ArrayList<String>) FileTool.readFile(FILE_NAME);
@@ -54,18 +53,19 @@ public class TaskDaoImpl implements TaskDao{
 
     @Override
     public boolean saveTask(String name, double reward, String requester, int workerLimit,
-                            String ddl, String description, List<String> pictureList,  TagType tagType) {
+                            String ddl, String description, String pictureFolder,  TagType tagType) {
         int size = init().size();
         int id = init().size() == 0 ? 1 : init().get(size - 1).getId() + 1;
         String beginDate = DateHelper.getDate();
         Task task = new Task(id, name, reward, requester, workerLimit, null,
-                beginDate, ddl, description, null, null, pictureList, tagType);
+                beginDate, ddl, description, null, null,
+                FileTool.listPictureName(pictureFolder), tagType);
         String jsonStr = GsonTool.toJson(task);
         /**
          * 暂定发布任务直接扣除 (单个奖赏 * 人数)
          */
-        double property = userDao.getUserByName(requester).getProperty() - reward * workerLimit;
-        return FileTool.writeFile(FILE_NAME, jsonStr) && userDao.updateProperty(requester, property);
+
+        return FileTool.writeFile(FILE_NAME, jsonStr);
 
     }
 
@@ -147,7 +147,7 @@ public class TaskDaoImpl implements TaskDao{
             strList.add(jsonStr);
         }
 
-        return FileTool.rewriteFile(FILE_NAME, strList) && userDao.bePunished(worker);
+        return FileTool.rewriteFile(FILE_NAME, strList);
     }
 
     @Override
@@ -203,8 +203,7 @@ public class TaskDaoImpl implements TaskDao{
             }
         }
         int sum = task.getPictureList().size();
-        int taggedSize = pictureDao.listUntaggedPicture(id, worker).size();
-        return taggedSize * 1.0 / sum;
+        return 0;
     }
 
     @Override

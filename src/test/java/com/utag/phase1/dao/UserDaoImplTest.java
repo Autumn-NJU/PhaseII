@@ -3,13 +3,16 @@ package com.utag.phase1.dao;
 import com.utag.phase1.dao.DaoService.UserDao;
 import com.utag.phase1.domain.User;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.IOException;
 
 
 import static org.junit.Assert.*;
 
 public class UserDaoImplTest {
-    UserDao userDao = new UserDaoImpl();
+    @Autowired
+    private UserDao userDao;
     private static final String str = "admin";
     private static final String str1 = "py";
     private static final String str2 = "pypy233";

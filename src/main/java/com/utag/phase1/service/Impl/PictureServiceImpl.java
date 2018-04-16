@@ -1,7 +1,6 @@
 package com.utag.phase1.service.Impl;
 
 import com.utag.phase1.dao.DaoService.PictureDao;
-import com.utag.phase1.domain.Picture;
 import com.utag.phase1.service.PictureService;
 import com.utag.phase1.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;

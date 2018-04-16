@@ -3,14 +3,15 @@ package com.utag.phase1.dao;
 import com.utag.phase1.dao.DaoService.TagPartDao;
 import com.utag.phase1.domain.TagPart;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
 import static org.junit.Assert.*;
 
 public class TagPartDaoImplTest {
-
-    TagPartDao tagPartDao = new TagPartDaoImpl();
+    @Autowired
+    private TagPartDao tagPartDao;
 
     @Test
     public void saveTagPart() throws IOException{

@@ -19,7 +19,7 @@ public interface TaskService {
      * @return
      */
     Response<Boolean> saveTask(String name, double reward, String requester, int workerLimit,
-                             String ddl, String description, List<String> pictureList, TagType tagType);
+                             String ddl, String description, String folderName, TagType tagType);
     /**
      * 删除任务
      * @param id

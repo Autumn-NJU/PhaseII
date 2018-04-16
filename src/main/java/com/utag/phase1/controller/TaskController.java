@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-@Controller("/task")
+@Controller
+@RequestMapping("/task")
 public class TaskController {
     @Autowired
     private TaskService taskService;
@@ -18,9 +19,9 @@ public class TaskController {
     @RequestMapping("/save")
     @ResponseBody
     public Response<Boolean> saveTask(String name, double reward, String requester, int workerLimit, String ddl,
-                                      String description, List<String> pictureList, TagType tagType){
+                                      String description, String folderName, TagType tagType){
         return taskService.saveTask(name, reward, requester, workerLimit, ddl,
-                description, pictureList, tagType);
+                description, folderName, tagType);
 
     }
     

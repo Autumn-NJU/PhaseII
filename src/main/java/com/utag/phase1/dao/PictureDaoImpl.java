@@ -17,9 +17,8 @@ import java.util.Map;
 public class PictureDaoImpl implements PictureDao {
 
     private static final String FILE_NAME = "pictures.json";
+    private static final String FOLDER_NAME = "images/";
 
-    @Autowired
-    private TaskDao taskDao;
 
     private ArrayList<Picture> init(){
         List<String> pictureStrList = FileTool.readFile(FILE_NAME);
@@ -50,9 +49,8 @@ public class PictureDaoImpl implements PictureDao {
         if(taskID == -1)
             return false;
 
-        double process = taskDao.calculateProcess(taskID, worker);
 
-        return FileTool.rewriteFile(FILE_NAME, pictureStrList) && taskDao.updateProcess(taskID, worker, process);
+        return FileTool.rewriteFile(FILE_NAME, pictureStrList);
     }
 
     @Override
@@ -64,6 +62,27 @@ public class PictureDaoImpl implements PictureDao {
                 list.add(p.getImageID());
         }
         return list;
+    }
+
+    @Override
+    public List<String> listPictureName() {
+        return FileTool.listPictureName(FOLDER_NAME);
+    }
+
+    @Override
+    public boolean savePictureList(int taskID, String worker,List<String> nameList) {
+        for(String name: nameList){
+            Picture picture = new Picture(taskID, name, worker);
+            String str = GsonTool.toJson(picture);
+            if(!FileTool.writeFile(FILE_NAME, str))
+                return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean deletePictureList(int taskID, String abandoner) {
+        return false;
     }
 
 }

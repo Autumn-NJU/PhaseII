@@ -8,8 +8,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 public class TagWholeDaoImplTest {
-    TagWholeDao tagWholeDao = new TagWholeDaoImpl();
-
+    private TagWholeDao tagWholeDao;
     @Test
     public void saveTagWhole() throws IOException{
         assertEquals(true, tagWholeDao.saveTagWhole("0", "test0"));

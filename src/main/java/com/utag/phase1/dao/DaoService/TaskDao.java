@@ -14,7 +14,7 @@ public interface TaskDao {
      * @return
      */
     public boolean saveTask(String name, double reward, String requester, int workerLimit,
-                            String ddl, String description, List<String> pictureList, TagType tagType);
+                            String ddl, String description, String pictureFolder, TagType tagType);
     /**
      * 删除任务
      * @param id

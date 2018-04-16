@@ -20,4 +20,22 @@ public interface PictureDao {
      */
     List<String> listUntaggedPicture(int taskID, String worker);
 
+    /**
+     * 初始化标注图片，返回图片名的list
+     * @return
+     */
+    List<String> listPictureName();
+
+    /**
+     * 发布任务的同时保存图片名
+     * @return
+     */
+    boolean savePictureList(int taskID, String worker, List<String> nameList);
+
+    /**
+     *放弃任务时删除图片信息，需要判断是发布者还是工人
+     * @param taskID
+     * @return
+     */
+    boolean deletePictureList(int taskID, String abandoner);
 }

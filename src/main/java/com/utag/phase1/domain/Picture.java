@@ -41,7 +41,6 @@ public class Picture implements Serializable{
         this.isTagged = false;
     }
 
-
     public int getTaskID() {
         return taskID;
     }

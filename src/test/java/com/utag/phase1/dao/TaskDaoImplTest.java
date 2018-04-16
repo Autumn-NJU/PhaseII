@@ -3,20 +3,23 @@ package com.utag.phase1.dao;
 import com.utag.phase1.dao.DaoService.TaskDao;
 import com.utag.phase1.dao.enumeration.TagType;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.*;
 
 public class TaskDaoImplTest {
-    private TaskDao taskDao = new TaskDaoImpl();
+    @Autowired
+    private TaskDao taskDao;
+    private static final String FOLDER_NAME = "images";
 
     @Test
     public void saveTask() {
        assertEquals(true, taskDao.saveTask("任务1",
                2.3, "py", 10, "2018-10-11 18:19:34",
-               "task1", null, TagType.Whole));
+               "task1", FOLDER_NAME, TagType.Whole));
        assertEquals(true, taskDao.saveTask("任务2",
-               2.33333, "gay宁", 10, "2018-10-11 19:19:19",
-               "task2", null, TagType.Whole));
+               2.33333, "py", 10, "2018-10-11 19:19:19",
+               "task2", FOLDER_NAME, TagType.Whole));
     }
 
     @Test

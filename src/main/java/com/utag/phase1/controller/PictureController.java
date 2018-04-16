@@ -12,12 +12,13 @@ import java.util.List;
 /**
  * 控制单个图片的controller, URL命名以/workplace/picture起始
  */
-@Controller("/workplace/picture")
+@Controller
+@RequestMapping("/tag")
 public class PictureController {
     @Autowired
-    private PictureService pictureService;
+    PictureService pictureService;
 
-    @RequestMapping("tag")
+    @RequestMapping("tagoprd")
     @ResponseBody
     public Response<Boolean> tagPicture(String id){
         return pictureService.tagPicture(id);
