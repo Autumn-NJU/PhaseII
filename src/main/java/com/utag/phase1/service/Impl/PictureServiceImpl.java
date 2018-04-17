@@ -23,7 +23,7 @@ public class PictureServiceImpl implements PictureService {
             String[] arr = id.split("-");
             int taskID = Integer.parseInt(arr[0]);
             String worker = arr[1];
-            double process = taskDao.calculateProcess(taskID, worker);
+            double process = pictureDao.calculateProcess(taskID, worker);
             taskDao.updateProcess(taskID, worker, process);
             return new Response<>(true, "Succeed to tag picture!");
         }catch (Exception ex){

@@ -66,14 +66,6 @@ public interface TaskDao {
      */
     List<Task> listTaskByWorker(String worker);
 
-    /**
-     *  /**
-     * 计算标注的进程
-     * @param id
-     * @param worker
-     * @return
-     */
-    double calculateProcess(int id, String worker);
 
     /**
      * 更新进度信息

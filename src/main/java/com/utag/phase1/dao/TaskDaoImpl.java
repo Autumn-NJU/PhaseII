@@ -193,18 +193,6 @@ public class TaskDaoImpl implements TaskDao{
     }
 
 
-    @Override
-    public double calculateProcess(int id, String worker){
-        Task task = new Task();
-        for(Task t: init()){
-            if(t.getId() == id){
-                task = t;
-                break;
-            }
-        }
-        int sum = task.getPictureList().size();
-        return 0;
-    }
 
     @Override
     public boolean updateProcess(int taskID, String worker, double val){

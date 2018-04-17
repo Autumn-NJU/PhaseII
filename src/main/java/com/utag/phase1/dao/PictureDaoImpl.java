@@ -83,4 +83,16 @@ public class PictureDaoImpl implements PictureDao {
         return false;
     }
 
+    @Override
+    public double calculateProcess(int taskID, String worker) {
+        int sum = 0;
+        List<String> list = new ArrayList<>();
+        ArrayList<Picture> pictureList = init();
+        for(Picture p: pictureList){
+            if(p.getTaskID() == taskID && p.getWorker().equals(worker))
+                sum++;
+        }
+        return sum * 1.0 / listUntaggedPicture(taskID, worker).size();
+    }
+
 }

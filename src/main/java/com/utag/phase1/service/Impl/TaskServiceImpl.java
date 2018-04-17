@@ -57,7 +57,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Response<Boolean> updateTask(int id, double reward, int workerLimit, String ddl, String description) {
+    public Response<Boolean> updateTask(int id, double reward, int workerLimit, String ddl,
+                                        String description) {
         try{
             taskDao.updateTask(id, reward, workerLimit, ddl, description);
             return new Response(true, "Succeed to update task!");
@@ -123,5 +124,6 @@ public class TaskServiceImpl implements TaskService {
             return new Response<>(false, "Fail to list task by worker!");
         }
     }
+
 
 }

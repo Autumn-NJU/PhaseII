@@ -38,4 +38,12 @@ public interface PictureDao {
      * @return
      */
     boolean deletePictureList(int taskID, String abandoner);
+
+    /**
+     * 计算对应个人的单个任务标注进程
+     * @param taskID
+     * @param worker
+     * @return
+     */
+    double calculateProcess(int taskID, String worker);
 }
