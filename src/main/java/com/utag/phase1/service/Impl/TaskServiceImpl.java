@@ -48,7 +48,8 @@ public class TaskServiceImpl implements TaskService {
     public Response<Boolean> deleteTask(int id) {
         try{
             taskDao.deleteTask(id);
-            return new Response(true, "Succeed to delete task!");
+            return
+                    new Response(true, "Succeed to delete task!");
         }catch (Exception ex){
             ex.printStackTrace();
             return new Response(true, "Fail to delete task!");
