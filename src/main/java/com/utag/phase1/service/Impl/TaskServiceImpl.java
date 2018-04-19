@@ -34,9 +34,12 @@ public class TaskServiceImpl implements TaskService {
     public Response<Boolean> saveTask(String name, double reward, String requester, int workerLimit, String ddl,
                              String description, String folderName, TagType tagType) {
         try {
-            taskDao.saveTask(name, reward, requester, workerLimit, ddl, description, folderName, tagType);
-            double property = userDao.getUserByName(name).getProperty() - reward * workerLimit;
+            double property = userDao.getUserByName(requester).getProperty() - reward * workerLimit;
+            if(property < 0){
+
+            }
             userDao.updateProperty(requester, property);
+            taskDao.saveTask(name, reward, requester, workerLimit, ddl, description, folderName, tagType);
             return new Response<>(true, "Succeed to save task!");
         }catch (Exception ex){
             ex.printStackTrace();
@@ -48,8 +51,7 @@ public class TaskServiceImpl implements TaskService {
     public Response<Boolean> deleteTask(int id) {
         try{
             taskDao.deleteTask(id);
-            return
-                    new Response(true, "Succeed to delete task!");
+            return new Response(true, "Succeed to delete task!");
         }catch (Exception ex){
             ex.printStackTrace();
             return new Response(true, "Fail to delete task!");
@@ -125,6 +127,5 @@ public class TaskServiceImpl implements TaskService {
             return new Response<>(false, "Fail to list task by worker!");
         }
     }
-
 
 }

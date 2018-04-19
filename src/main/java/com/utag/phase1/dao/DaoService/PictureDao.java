@@ -1,7 +1,5 @@
 package com.utag.phase1.dao.DaoService;
 
-import com.utag.phase1.domain.Picture;
-
 import java.util.List;
 
 public interface PictureDao {

@@ -5,11 +5,11 @@ import com.utag.phase1.service.TagWholeService;
 import com.utag.phase1.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.security.krb5.internal.crypto.RsaMd5CksumType;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 
 @Service
+@Transactional
 public class TagWholeServiceImpl implements TagWholeService {
 
     @Autowired

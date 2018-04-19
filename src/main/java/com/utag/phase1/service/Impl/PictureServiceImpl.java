@@ -6,10 +6,12 @@ import com.utag.phase1.service.PictureService;
 import com.utag.phase1.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class PictureServiceImpl implements PictureService {
     @Autowired
     private PictureDao pictureDao;
