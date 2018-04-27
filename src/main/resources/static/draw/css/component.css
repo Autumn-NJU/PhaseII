@@ -64,11 +64,11 @@
 		color: white;
 }
 
-.no-touch .gn-menu-main a.normal,
-.no-touch .gn-menu li.gn-search-item.normal,
-.no-touch .gn-menu li.gn-search-item.normal a {
-         color:while;
-}
+/*.no-touch .gn-menu-main a.normal,*/
+/*.no-touch .gn-menu li.gn-search-item.normal,*/
+/*.no-touch .gn-menu li.gn-search-item.normal a {*/
+
+/*}*/
 
 .gn-menu-main > li {
 		display: block;

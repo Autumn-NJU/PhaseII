@@ -31,7 +31,7 @@ public interface PictureDao {
     boolean savePictureList(int taskID, String worker, List<String> nameList);
 
     /**
-     *放弃任务时删除图片信息，需要判断是发布者还是工人
+     * 放弃任务时删除图片信息，需要判断是发布者还是工人
      * @param taskID
      * @return
      */

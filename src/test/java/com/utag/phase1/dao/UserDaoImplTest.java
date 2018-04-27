@@ -1,6 +1,7 @@
 package com.utag.phase1.dao;
 
 import com.utag.phase1.dao.DaoService.UserDao;
+import com.utag.phase1.dao.enumeration.UserType;
 import com.utag.phase1.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,23 +12,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
+
 public class UserDaoImplTest {
-    @Autowired
-    private UserDao userDao;
+    private UserDao userDao = new UserDaoImpl();
 
     private static final String str = "admin";
     private static final String str1 = "py";
     private static final String str2 = "pypy233";
     private static final String UPPWD = "012345";
+    private static final UserType u1 = UserType.Requester;
+    private static final UserType u2 = UserType.Worker;
 
 
     @Test
     public void saveUser() {
-        assertEquals(true, userDao.saveUser(str, str));
-        assertEquals(true, userDao.saveUser(str1, str1));
-        assertEquals(true, userDao.saveUser(str2, str2));
+        assertEquals(true, userDao.saveUser(str, str, u1));
+        assertEquals(true, userDao.saveUser(str1, str1, u1));
+        assertEquals(true, userDao.saveUser(str2, str2, u2));
 
     }
 
@@ -77,6 +78,11 @@ public class UserDaoImplTest {
         assertEquals(true, userDao.bePunished(str));
         assertEquals(true, userDao.bePunished(str1));
         assertEquals(true, userDao.bePunished(str2));
+    }
+
+    @Test
+    public void listUser(){
+        assertEquals(3, userDao.listUser().size());
     }
 
 }

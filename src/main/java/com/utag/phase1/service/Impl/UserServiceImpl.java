@@ -1,11 +1,18 @@
 package com.utag.phase1.service.Impl;
 
 import com.utag.phase1.dao.DaoService.UserDao;
+import com.utag.phase1.dao.enumeration.UserType;
+import com.utag.phase1.domain.User;
 import com.utag.phase1.service.UserService;
 import com.utag.phase1.util.Response;
+import com.utag.phase1.util.TransVO;
+import com.utag.phase1.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -16,9 +23,9 @@ public class UserServiceImpl implements UserService  {
 
 
     @Override
-    public Response<Boolean> saveUser(String user, String password){
+    public Response<Boolean> saveUser(String user, String password, UserType userType){
         try{
-            userDao.saveUser(user, password);
+            userDao.saveUser(user, password, userType);
             return new Response<>(true, "Succeed to register!");
         }catch (Exception e){
             e.printStackTrace();
@@ -55,6 +62,42 @@ public class UserServiceImpl implements UserService  {
         }catch (Exception e){
             e.printStackTrace();
             return new Response<>(false, "Fail to login!");
+        }
+    }
+
+    @Override
+    public Response<List<UserVO>> listUser() {
+        try{
+            List<UserVO> list = new ArrayList<>();
+            for(User u: userDao.listUser()){
+                list.add(TransVO.transUserVO(u));
+            }
+            return new Response<List<UserVO>>( true,  list, "Succeed to list user!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail to list user!");
+        }
+    }
+
+    @Override
+    public Response<Integer> getWorkerNum() {
+        try{
+            int num = userDao.getWorkerNum();
+            return new Response<>(true, num, "Succeed to get worker num!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail to get worker num!");
+        }
+    }
+
+    @Override
+    public Response<Integer> getRequesterNum() {
+        try {
+            int num = userDao.getRequesterNum();
+            return new Response<>(true, num, "Succeed to get requester num!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail to get requester num!");
         }
     }
 

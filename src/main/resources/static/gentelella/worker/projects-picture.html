@@ -1,0 +1,767 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Utag | </title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+
+    <!-- Picture Waterfall Style -->
+    <link href="../production/css/maps/style.css" rel="stylesheet" type="text/css">
+
+    <!-- 通过 URL 获得当前用户的用户名 -->
+    <script>
+        //初始化
+        var userName = "unknown";
+        var taskID = 999999;
+        /*$(function(){
+           getUserNameByUrl();
+        });
+        function getUserNameByUrl(){
+            userName = $.query.get("user");
+            taskID = $.query.get("taskID");
+        }*/
+    </script>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Utag</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile">
+                    <div class="profile_pic">
+                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>Welcome,</span>
+                        <h2>John Doe</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br />
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>General</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="index.html">Dashboard</a></li>
+                                    <li><a href="index2.html">Dashboard2</a></li>
+                                    <li><a href="index3.html">Dashboard3</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="form.html">General Form</a></li>
+                                    <li><a href="form_advanced.html">Advanced Components</a></li>
+                                    <li><a href="form_validation.html">Form Validation</a></li>
+                                    <li><a href="form_wizards.html">Form Wizard</a></li>
+                                    <li><a href="form_upload.html">Form Upload</a></li>
+                                    <li><a href="form_buttons.html">Form Buttons</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="general_elements.html">General Elements</a></li>
+                                    <li><a href="media_gallery.html">Media Gallery</a></li>
+                                    <li><a href="typography.html">Typography</a></li>
+                                    <li><a href="icons.html">Icons</a></li>
+                                    <li><a href="glyphicons.html">Glyphicons</a></li>
+                                    <li><a href="widgets.html">Widgets</a></li>
+                                    <li><a href="invoice.html">Invoice</a></li>
+                                    <li><a href="inbox.html">Inbox</a></li>
+                                    <li><a href="calendar.html">Calendar</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="tables.html">Tables</a></li>
+                                    <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="chartjs.html">Chart JS</a></li>
+                                    <li><a href="chartjs2.html">Chart JS2</a></li>
+                                    <li><a href="morisjs.html">Moris JS</a></li>
+                                    <li><a href="echarts.html">ECharts</a></li>
+                                    <li><a href="other_charts.html">Other Charts</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
+                                    <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu_section">
+                        <h3>Live On</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="e_commerce.html">E-commerce</a></li>
+                                    <li><a href="projects.html">Projects</a></li>
+                                    <li><a href="project_detail.html">Project Detail</a></li>
+                                    <li><a href="contacts.html">Contacts</a></li>
+                                    <li><a href="profile.html">Profile</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="page_403.html">403 Error</a></li>
+                                    <li><a href="page_404.html">404 Error</a></li>
+                                    <li><a href="page_500.html">500 Error</a></li>
+                                    <li><a href="plain_page.html">Plain Page</a></li>
+                                    <li><a href="login.html">Login Page</a></li>
+                                    <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="#level1_1">Level One</a>
+                                    <li><a>Level One<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li class="sub_menu"><a href="level2.html">Level Two</a>
+                                            </li>
+                                            <li><a href="#level2_1">Level Two</a>
+                                            </li>
+                                            <li><a href="#level2_2">Level Two</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#level1_2">Level One</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="images/img.jpg" alt="">John Doe
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="javascript:;"> Profile</a></li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span class="badge bg-red pull-right">50%</span>
+                                        <span>Settings</span>
+                                    </a>
+                                </li>
+                                <li><a href="javascript:;">Help</a></li>
+                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+
+                        <li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge bg-green">6</span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="text-center">
+                                        <a>
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>Explore<small>pictures</small></h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Projects</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#">Settings 1</a>
+                                            </li>
+                                            <li><a href="#">Settings 2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <p>Pictures of the task</p>
+
+                                <!--<div id="worker_task_list">-->
+                                <div id="waterfall">
+                                    <!--<script src="js/jquery.js"></script>
+                                    <script src="js/jquery.row_grid.js"></script>-->
+                                    <script>
+                                        var script = document.createElement("script");
+                                        script.type = "text/javascript";
+                                        script.src = "../production/js/user_view/worker-picture.js";
+                                        document.body.appendChild(script);
+                                    </script>
+                                </div>
+                                <!-- start project list -->
+                                <!--<table class="table table-striped projects">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 1%">#</th>
+                                        <th style="width: 20%">项目名<small>Project Name</small></th>
+                                        <th>发起者<small>Launcher</small></th>
+                                        <th>项目进度<small>Project Progress</small></th>
+                                        <th>项目状态<small>Status</small></th>
+                                        <th style="width: 20%">#Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>000001</td>
+                                        <td>
+                                            <a>Pesamakini Backend UI</a>
+                                            <br />
+                                            <small>Created 01.01.2015</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <img src="images/user.png" class="avatar" alt="Avatar">
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="57"></div>
+                                            </div>
+                                            <small>57% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>000002</td>
+                                        <td>
+                                            <a>Pesamakini Backend UI</a>
+                                            <br />
+                                            <small>Created 01.01.2015</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <img src="images/user.png" class="avatar" alt="Avatar">
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="47"></div>
+                                            </div>
+                                            <small>47% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>000003</td>
+                                        <td>
+                                            <a>Pesamakini Backend UI</a>
+                                            <br />
+                                            <small>Created 01.01.2015</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <img src="images/user.png" class="avatar" alt="Avatar">
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
+                                            </div>
+                                            <small>77% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>000004</td>
+                                        <td>
+                                            <a>Pesamakini Backend UI</a>
+                                            <br />
+                                            <small>Created 01.01.2015</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <img src="images/user.png" class="avatar" alt="Avatar">
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                                            </div>
+                                            <small>60% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>000005</td>
+                                        <td>
+                                            <a>Pesamakini Backend UI</a>
+                                            <br />
+                                            <small>Created 01.01.2015</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <img src="images/user.png" class="avatar" alt="Avatar">
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="12"></div>
+                                            </div>
+                                            <small>12% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>000006</td>
+                                        <td>
+                                            <a>Pesamakini Backend UI</a>
+                                            <br />
+                                            <small>Created 01.01.2015</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <img src="images/user.png" class="avatar" alt="Avatar">
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="35"></div>
+                                            </div>
+                                            <small>35% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>000007</td>
+                                        <td>
+                                            <a>Pesamakini Backend UI</a>
+                                            <br />
+                                            <small>Created 01.01.2015</small>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <img src="images/user.png" class="avatar" alt="Avatar">
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="project_progress">
+                                            <div class="progress progress_sm">
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="87"></div>
+                                            </div>
+                                            <small>87% Complete</small>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-xs">Success</button>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>-->
+                                <!-- end project list -->
+                            </div>
+                        </div>
+
+                        <!--User List-->
+                        <!--<div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Button Example <small>Users</small></h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">Settings 1</a>
+                                                </li>
+                                                <li><a href="#">Settings 2</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <p class="text-muted font-13 m-b-30">
+                                        The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+                                    </p>
+                                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                            <td>2011/07/25</td>
+                                            <td>$170,750</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jennifer Chang</td>
+                                            <td>Regional Director</td>
+                                            <td>Singapore</td>
+                                            <td>28</td>
+                                            <td>2010/11/14</td>
+                                            <td>$357,650</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brenden Wagner</td>
+                                            <td>Software Engineer</td>
+                                            <td>San Francisco</td>
+                                            <td>28</td>
+                                            <td>2011/06/07</td>
+                                            <td>$206,850</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fiona Green</td>
+                                            <td>Chief Operating Officer (COO)</td>
+                                            <td>San Francisco</td>
+                                            <td>48</td>
+                                            <td>2010/03/11</td>
+                                            <td>$850,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shou Itou</td>
+                                            <td>Regional Marketing</td>
+                                            <td>Tokyo</td>
+                                            <td>20</td>
+                                            <td>2011/08/14</td>
+                                            <td>$163,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Michelle House</td>
+                                            <td>Integration Specialist</td>
+                                            <td>Sidney</td>
+                                            <td>37</td>
+                                            <td>2011/06/02</td>
+                                            <td>$95,400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Suki Burks</td>
+                                            <td>Developer</td>
+                                            <td>London</td>
+                                            <td>53</td>
+                                            <td>2009/10/22</td>
+                                            <td>$114,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Prescott Bartlett</td>
+                                            <td>Technical Author</td>
+                                            <td>London</td>
+                                            <td>27</td>
+                                            <td>2011/05/07</td>
+                                            <td>$145,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gavin Cortez</td>
+                                            <td>Team Leader</td>
+                                            <td>San Francisco</td>
+                                            <td>22</td>
+                                            <td>2008/10/26</td>
+                                            <td>$235,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Martena Mccray</td>
+                                            <td>Post-Sales support</td>
+                                            <td>Edinburgh</td>
+                                            <td>46</td>
+                                            <td>2011/03/09</td>
+                                            <td>$324,050</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Unity Butler</td>
+                                            <td>Marketing Designer</td>
+                                            <td>San Francisco</td>
+                                            <td>47</td>
+                                            <td>2009/12/09</td>
+                                            <td>$85,675</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Howard Hatfield</td>
+                                            <td>Office Manager</td>
+                                            <td>San Francisco</td>
+                                            <td>51</td>
+                                            <td>2008/12/16</td>
+                                            <td>$164,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hope Fuentes</td>
+                                            <td>Secretary</td>
+                                            <td>San Francisco</td>
+                                            <td>41</td>
+                                            <td>2010/02/12</td>
+                                            <td>$109,850</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vivian Harrell</td>
+                                            <td>Financial Controller</td>
+                                            <td>San Francisco</td>
+                                            <td>62</td>
+                                            <td>2009/02/14</td>
+                                            <td>$452,500</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Michael Bruce</td>
+                                            <td>Javascript Developer</td>
+                                            <td>Singapore</td>
+                                            <td>29</td>
+                                            <td>2011/06/27</td>
+                                            <td>$183,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Donna Snider</td>
+                                            <td>Customer Support</td>
+                                            <td>New York</td>
+                                            <td>27</td>
+                                            <td>2011/01/25</td>
+                                            <td>$112,000</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>-->
+                        <!--Users List-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                <!--Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>-->
+                Utag - Crowdsourcing Tags Project by Group Autumn
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+<!--<script type="text/javascript" src="../production/js/user_view/worker-picture.js"></script>-->
+</body>
+</html>

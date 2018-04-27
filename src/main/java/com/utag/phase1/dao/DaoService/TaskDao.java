@@ -2,6 +2,9 @@ package com.utag.phase1.dao.DaoService;
 
 import com.utag.phase1.dao.enumeration.TagType;
 import com.utag.phase1.domain.Task;
+import com.utag.phase1.domain.User;
+import com.utag.phase1.vo.TaskVO;
+
 import java.util.List;
 import java.util.Map;
 
@@ -75,4 +78,54 @@ public interface TaskDao {
      * @return
      */
     boolean updateProcess(int taskID, String worker, double val);
+
+    /**
+     * 返回所有任务
+     * @return
+     */
+    List<TaskVO> listAllTask();
+
+    /**
+     *根据任务id返回任务信息
+     * @param id
+     * @return
+     */
+    Task getTaskById(int id);
+
+    /**
+     * 得到所有任务数
+     * @return
+     */
+    int getTaskNum();
+
+    /**
+     * 未超出人数的可领任务
+     * @return
+     */
+    List<Task> listAvailableTask();
+
+    /**
+     *
+     * @return
+     */
+    List<Integer> listPartNum();
+
+    /**
+     *
+     * @return
+     */
+    int getPartTaskNum();
+
+    /**
+     *
+     * @return
+     */
+    int getWholeTaskNum();
+
+    /**
+     *
+     * @return
+     */
+    int getRegTaskNum();
+
 }

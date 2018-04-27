@@ -10,8 +10,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 public class TagPartDaoImplTest {
-    @Autowired
-    private TagPartDao tagPartDao;
+    private TagPartDao tagPartDao = new TagPartDaoImpl();
 
     @Test
     public void saveTagPart() throws IOException{

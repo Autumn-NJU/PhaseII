@@ -17,9 +17,16 @@ public class TagPartServiceImpl implements TagPartService {
     private TagPartDao tagPartDao;
 
     @Override
-    public Response<Boolean> saveTagPart(String imageID, double x1, double x2, double y1, double y2, String description){
+    public Response<Boolean> saveTagPart(List<TagPart> tagPartList, String imageId){
         try{
-            tagPartDao.saveTagPart(imageID, x1, x2, y1, y2, description);
+            for(TagPart t: tagPartList) {
+                double x1 = t.getX1();
+                double x2 = t.getX2();
+                double y1 = t.getY1();
+                double y2 = t.getY2();
+                String description = t.getDescription();
+                tagPartDao.saveTagPart(imageId, x1, x2, y1, y2, description);
+            }
             return new Response<>(true, "Succeed to save user!");
         }catch (Exception e){
             e.printStackTrace();

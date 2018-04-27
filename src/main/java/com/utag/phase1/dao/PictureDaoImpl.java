@@ -47,7 +47,6 @@ public class PictureDaoImpl implements PictureDao {
         if(taskID == -1)
             return false;
 
-
         return FileTool.rewriteFile(FILE_NAME, pictureStrList);
     }
 

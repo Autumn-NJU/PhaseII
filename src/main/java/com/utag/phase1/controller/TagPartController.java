@@ -4,10 +4,7 @@ import com.utag.phase1.domain.TagPart;
 import com.utag.phase1.service.TagPartService;
 import com.utag.phase1.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,9 +18,8 @@ public class TagPartController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
-    public Response<Boolean> saveTagPart(String imageID, double x1,
-                                         double x2, double y1, double y2, String description) throws IOException{
-        return tagPartService.saveTagPart(imageID, x1, x2, y1, y2, description);
+    public Response<Boolean> saveTagPart(@RequestBody List<TagPart> tagPart, String imageId)throws IOException{
+        return tagPartService.saveTagPart(tagPart, imageId);
 
     }
 
@@ -52,7 +48,6 @@ public class TagPartController {
     @ResponseBody
     public Response<Integer> getDescriptionLength(String imageID, double x1,
                                                   double x2, double y1, double y2) throws IOException{
-
         return tagPartService.getDescriptionLength(imageID, x1, x2, y1, y2);
     }
 

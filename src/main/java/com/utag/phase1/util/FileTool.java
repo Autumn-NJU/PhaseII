@@ -78,17 +78,17 @@ public class FileTool {
      * @return
      */
     public static List<String> listPictureName(String folderName){
-        String newPrefixPath = "src/main/resources/static/";
+        String newPrefixPath = "src/main/resources/static/task/files/";
         File file = new File(newPrefixPath + folderName);
         List<String> list = new ArrayList<>();
         if(file.isDirectory()){
             File[] files = file.listFiles();
             for(int i = 0; i < files.length; i++){
                 if(files[i].isDirectory()){
-                    return listPictureName(files[i].getPath());
+                    return listPictureName(newPrefixPath + files[i].getPath());
                 }
                 if(!files[i].getName().startsWith(".")) //兄dei，有隐藏.文件，剔掉
-                    list.add(files[i].getName());
+                    list.add(newPrefixPath + files[i].getName());
             }
         }
         return list;

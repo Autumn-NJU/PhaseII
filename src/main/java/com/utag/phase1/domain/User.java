@@ -57,6 +57,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public User(String username, String password, UserType userType) {
+        this.username = username;
+        this.password = password;
+        this.userType = userType;
+    }
+
     public User(String username, String password, double property, int level, double experience) {
         this.username = username;
         this.password = password;
@@ -140,4 +146,5 @@ public class User implements Serializable {
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
+
 }

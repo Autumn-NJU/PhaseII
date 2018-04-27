@@ -13,7 +13,7 @@
 
                 success : function (data) {
                     if(data.success){
-                        window.location.href="draw/index.html";
+                        window.location.href="gentelella/admin/project_detail.html";
                     }else
                         alert("Error!");
                 },

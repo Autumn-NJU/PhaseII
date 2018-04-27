@@ -1,12 +1,14 @@
 package com.utag.phase1.dao;
 
 import com.utag.phase1.dao.DaoService.UserDao;
+import com.utag.phase1.dao.enumeration.UserType;
 import com.utag.phase1.domain.User;
 import com.utag.phase1.util.FileTool;
 import com.utag.phase1.util.GsonTool;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class UserDaoImpl  implements UserDao {
@@ -30,8 +32,8 @@ public class UserDaoImpl  implements UserDao {
     }
 
     @Override
-    public boolean saveUser(String user, String password) {
-        User user1 = new User(user, password);
+    public boolean saveUser(String user, String password, UserType userType) {
+        User user1 = new User(user, password, userType);
         String jsonStr = GsonTool.toJson(user1);
         return !(isUserExist(user)) && FileTool.writeFile(FILE_NAME, jsonStr);
     }
@@ -130,6 +132,21 @@ public class UserDaoImpl  implements UserDao {
         return FileTool.rewriteFile(FILE_NAME, strList);
     }
 
+    @Override
+    public List<User> listUser() {
+        return init();
+    }
+
+    @Override
+    public int getWorkerNum() {
+       return getNum(UserType.Worker);
+    }
+
+    @Override
+    public int getRequesterNum() {
+        return getNum(UserType.Requester);
+    }
+
 
     private boolean isUserExist(String user) {
         ArrayList<User> userList = init();
@@ -138,6 +155,15 @@ public class UserDaoImpl  implements UserDao {
                 return true;
         }
         return false;
+    }
+
+    private int getNum(UserType userType){
+        int count = 0;
+        for(User u: init()) {
+            if (u.getUserType().equals(userType))
+                count++;
+        }
+        return count;
     }
 
 }

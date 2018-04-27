@@ -12,4 +12,9 @@ public class DateHelper {
         String s = f.format(date);
         return s;
     }
+
+    public static int getMonth(String date, int beg, int end){
+        String monthStr = date.substring(beg, end);
+        return Integer.parseInt(monthStr);
+    }
 }

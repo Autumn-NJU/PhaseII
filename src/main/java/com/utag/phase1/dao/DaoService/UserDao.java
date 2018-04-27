@@ -1,9 +1,11 @@
 package com.utag.phase1.dao.DaoService;
 
 
+import com.utag.phase1.dao.enumeration.UserType;
 import com.utag.phase1.domain.User;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 用户的数据层
@@ -13,7 +15,7 @@ public interface UserDao {
      *增加用户
      * @return
      */
-    boolean saveUser(String user, String password);
+    boolean saveUser(String user, String password, UserType userType);
 
     /**
      *删除用户
@@ -56,5 +58,22 @@ public interface UserDao {
      */
     boolean bePunished(String user);
 
+    /**
+     * 给出用户列表
+     * @return
+     */
+    List<User> listUser();
+
+    /**
+     * 工人人数
+     * @return
+     */
+    int getWorkerNum();
+
+    /**
+     * 发布者人数
+     * @return
+     */
+    int getRequesterNum();
 
 }

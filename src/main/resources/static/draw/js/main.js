@@ -1,17 +1,17 @@
 //撤销的array
-	var cancelList = new Array();
-	//撤销的次数
-	var cancelIndex = 0;
-
-	var picList = new Array();
-	var picNum = 3;
-
-	//var bgpAddr;
-    var bgpID;
+//	var cancelList = new Array();
+//	//撤销的次数
+//	var cancelIndex = 0;
+//
+//	var picList = new Array();
+//	var picNum = 3;
+//
+//	//var bgpAddr;
+//    var bgpID;
 
 	$(function(){
-		initCanvas();
-		initDrag();
+//		initCanvas();
+//		initDrag();
 
 		// 绑定绘画板工具
 		$(".icon-pencil").live("click",function(){
@@ -106,39 +106,39 @@
 
 
 	//初始化
-	var initCanvas = function(){
-		canvas =  document.getElementById("canvas");
-		canvas.width = canvasWidth;
-		canvas.height = canvasHeight;
-		context = canvas.getContext('2d');
+//	var initCanvas = function(){
+//		canvas =  document.getElementById("canvas");
+//		canvas.width = canvasWidth;
+//		canvas.height = canvasHeight;
+//		context = canvas.getContext('2d');
+//
+//		canvasTop = $(canvas).offset().top;
+//		canvasLeft = $(canvas).offset().left;
+//
+//		canvas_bak =  document.getElementById("canvas_bak");
+//		canvas_bak.width = canvasWidth;
+//		canvas_bak.height = canvasHeight;
+//		context_bak = canvas_bak.getContext('2d');
+//
+//		//初始化时加载图片
+//	 //	var img = new Image();
+//     //   img.src = "images/city.png";
+//     //   img.src = bgpAddr;
+//	/*	var img = document.getElementsByClassName("pic2");
+//        img.onload = function(){
+//        	context.drawImage(img , 0 ,0 , img.width , img.height , 0 ,0 , canvasWidth , canvasHeight);
+//        //	clearContext();
+//        }
+//*/
+//
+//	}
 
-		canvasTop = $(canvas).offset().top;
-		canvasLeft = $(canvas).offset().left;
-
-		canvas_bak =  document.getElementById("canvas_bak");
-		canvas_bak.width = canvasWidth;
-		canvas_bak.height = canvasHeight;
-		context_bak = canvas_bak.getContext('2d');
-
-		//初始化时加载图片
-	 //	var img = new Image();
-     //   img.src = "images/city.png";
-     //   img.src = bgpAddr;
-	/*	var img = document.getElementsByClassName("pic2");
-        img.onload = function(){
-        	context.drawImage(img , 0 ,0 , img.width , img.height , 0 ,0 , canvasWidth , canvasHeight);
-        //	clearContext();
-        }
-*/
-
-	}
 
 
-
-	//下载图片
-	var downloadImage = function(){
-		$("#downloadImage_a")[0].href=canvas.toDataURL();
-	}
+//	//下载图片
+//	var downloadImage = function(){
+//		$("#downloadImage_a")[0].href=canvas.toDataURL();
+//	}
 
 	//展开线条大小选择器
 	var showLineSize = function(obj){
@@ -160,20 +160,20 @@
 	}
 
 	// 填充前景
-	var fill=function(){
-		context.fillStyle= color;
-		context_bak.fillStyle= color;
-		var $canvas = $("#canvas"),
-			w = $canvas.width(),
-			h = $canvas.height();
-			context.fillRect(0, 0, w, h);
-
-			var image = new Image();
-			image.src = canvas_bak.toDataURL();
-			context.drawImage(image , 0 ,0 , image.width , image.height , 0 ,0 , canvasWidth , canvasHeight);
-			clearContext();
-			saveImageToAry();
-	}
+//	var fill=function(){
+//		context.fillStyle= color;
+//		context_bak.fillStyle= color;
+//		var $canvas = $("#canvas"),
+//			w = $canvas.width(),
+//			h = $canvas.height();
+//			context.fillRect(0, 0, w, h);
+//
+//			var image = new Image();
+//			image.src = canvas_bak.toDataURL();
+//			context.drawImage(image , 0 ,0 , image.width , image.height , 0 ,0 , canvasWidth , canvasHeight);
+//			clearContext();
+//			saveImageToAry();
+//	}
 
 	//加载图片
     /*var fillPicture = function(){

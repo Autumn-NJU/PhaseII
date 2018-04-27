@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ECharts Chart Bootstrap Examples | Gentellela Alela! by Colorlib</title>
+
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+          <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- menu profile quick info -->
+        <div class="profile">
+          <div class="profile_pic">
+            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+          </div>
+          <div class="profile_info">
+            <span>Welcome,</span>
+            <h2>John Doe</h2>
+          </div>
+        </div>
+        <!-- /menu profile quick info -->
+
+        <br />
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
+            <h3>General</h3>
+            <ul class="nav side-menu">
+              <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="admin_home.html">管理员主界面</a></li>
+                  <li><a href="project_user.html">当前项目及用户</a></li>
+                  <li><a href="project_update.html">更改项目</a></li>
+                  <li><a href="project_detail.html">项目详情</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="form.html">General Form</a></li>
+                  <li><a href="form_advanced.html">Advanced Components</a></li>
+                  <li><a href="form_validation.html">Form Validation</a></li>
+                  <li><a href="form_wizards.html">Form Wizard</a></li>
+                  <li><a href="form_upload.html">Form Upload</a></li>
+                  <li><a href="form_buttons.html">Form Buttons</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="general_elements.html">General Elements</a></li>
+                  <li><a href="media_gallery.html">Media Gallery</a></li>
+                  <li><a href="typography.html">Typography</a></li>
+                  <li><a href="icons.html">Icons</a></li>
+                  <li><a href="glyphicons.html">Glyphicons</a></li>
+                  <li><a href="widgets.html">Widgets</a></li>
+                  <li><a href="invoice.html">Invoice</a></li>
+                  <li><a href="inbox.html">Inbox</a></li>
+                  <li><a href="calendar.html">Calendar</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="tables.html">Tables</a></li>
+                  <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="chartjs.html">Chart JS</a></li>
+                  <li><a href="chartjs2.html">Chart JS2</a></li>
+                  <li><a href="morisjs.html">Moris JS</a></li>
+                  <li><a href="echarts.html">ECharts</a></li>
+                  <li><a href="other_charts.html">Other Charts</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
+                  <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="menu_section">
+            <h3>Live On</h3>
+            <ul class="nav side-menu">
+              <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="e_commerce.html">E-commerce</a></li>
+                  <li><a href="projects.html">Projects</a></li>
+                  <li><a href="project_detail.html">Project Detail</a></li>
+                  <li><a href="contacts.html">Contacts</a></li>
+                  <li><a href="profile.html">Profile</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="page_403.html">403 Error</a></li>
+                  <li><a href="page_404.html">404 Error</a></li>
+                  <li><a href="page_500.html">500 Error</a></li>
+                  <li><a href="plain_page.html">Plain Page</a></li>
+                  <li><a href="login.html">Login Page</a></li>
+                  <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                </ul>
+              </li>
+              <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="#level1_1">Level One</a>
+                  <li><a>Level One<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li class="sub_menu"><a href="level2.html">Level Two</a>
+                      </li>
+                      <li><a href="#level2_1">Level Two</a>
+                      </li>
+                      <li><a href="#level2_2">Level Two</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a href="#level1_2">Level One</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+            </ul>
+          </div>
+
+        </div>
+        <!-- /sidebar menu -->
+
+        <!-- /menu footer buttons -->
+        <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Logout">
+            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- /menu footer buttons -->
+      </div>
+    </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <nav>
+          <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <img src="images/img.jpg" alt="">John Doe
+                <span class=" fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-usermenu pull-right">
+                <li><a href="javascript:;"> Profile</a></li>
+                <li>
+                  <a href="javascript:;">
+                    <span class="badge bg-red pull-right">50%</span>
+                    <span>Settings</span>
+                  </a>
+                </li>
+                <li><a href="javascript:;">Help</a></li>
+                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+              </ul>
+            </li>
+
+            <li role="presentation" class="dropdown">
+              <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-envelope-o"></i>
+                <span class="badge bg-green">6</span>
+              </a>
+              <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                  </a>
+                </li>
+                <li>
+                  <div class="text-center">
+                    <a>
+                      <strong>See All Alerts</strong>
+                      <i class="fa fa-angle-right"></i>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- /top navigation -->
+
+    <!-- page content -->
+    <div class="right_col" role="main">
+
+      <div class="row tile_count">
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
+          <div  class="count">
+            <label id="allUserNumber">999</label>
+          </div>
+          <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-clock-o"></i>Total Workers </span>
+          <div  class="count">
+            <label id="worker">123</label>
+          </div>
+          <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Total Requesters</span>
+          <div  class="count green">
+            <label id="requester" >123</label>
+          </div>
+          <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Total Tasks</span>
+          <div class="count">
+            <label id="taskNumber">111</label>
+          </div>
+          <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+        </div>
+      </div>
+      <!-- /top tiles -->
+
+
+
+
+
+      <div class="">
+        <div class="page-title">
+          <div class="title_left">
+            <h3>平台统计一览<small>Some examples to get you started</small></h3>
+          </div>
+
+          <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+          <!--task situation-->
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>任务情况表</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Settings 1</a>
+                      </li>
+                      <li><a href="#">Settings 2</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content" style="display: block;">
+
+                <div id="mainb" style="height: 350px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: transparent;" _echarts_instance_="ec_1524743002410">
+                  <div style="position: relative; overflow: hidden; width: 1033px; height: 350px; cursor: default;">
+                    <canvas width="1033" height="350" data-zr-dom-id="zr_0" style="position: absolute; left: 0px; top: 0px; width: 1033px; height: 350px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                    </canvas>
+                  </div>
+                  <div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), top 0.4s cubic-bezier(0.23, 1, 0.32, 1); background-color: rgba(0, 0, 0, 0.5); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; font-family: Arial, Verdana, sans-serif; line-height: 21px; padding: 5px; left: 226.6px; top: 97px;">2?
+                    <br>
+                    <span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#26B99A"></span>sales : 4.9
+                    <br>
+                    <span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#34495E"></span>purchases : 5.9
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!--task situation-->
+
+
+
+
+
+
+
+          <!--user situation-->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>用户情况统计</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Settings 1</a>
+                      </li>
+                      <li><a href="#">Settings 2</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
+                <div id="echart_pie2" style="height:350px;"></div>
+
+              </div>
+            </div>
+          </div>
+          <!--user situation-->
+
+
+
+
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>任务情况统计</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Settings 1</a>
+                      </li>
+                      <li><a href="#">Settings 2</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
+                <div id="echart_donut" style="height:350px;"></div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2><i class="fa fa-align-left"></i> Collapsible / Accordion <small>Sessions</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Settings 1</a>
+                      </li>
+                      <li><a href="#">Settings 2</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
+                <!-- start accordion -->
+                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel">
+                    <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <h4 class="panel-title">Top 5 Workers</h4>
+                    </a>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                        <table id="top5workers" class="table table-bordered">
+                          <thead>
+                          <tr>
+                            <th>User Name</th>
+                            <th>Credits</th>
+                            <th>Level</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel">
+                    <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <h4 class="panel-title">Top 5 Requesters</h4>
+                    </a>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                      <div class="panel-body">
+                        <table id="top5requesters" class="table table-bordered">
+                          <thead>
+                          <tr>
+                            <th>User Name</th>
+                            <th>Credits</th>
+                            <th>Level</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- end of accordion -->
+
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+      <div class="pull-right">
+        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- ECharts -->
+<script src="../vendors/echarts/dist/echarts.min.js"></script>
+<script src="../vendors/echarts/map/js/world.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+
+<script>
+    var theme = {
+        color: [
+            '#26B99A', '#34495E', '#BDC3C7', '#3498DB',
+            '#9B59B6', '#8abb6f', '#759c6a', '#bfd3b7'
+        ],
+
+        title: {
+            itemGap: 8,
+            textStyle: {
+                fontWeight: 'normal',
+                color: '#408829'
+            }
+        },
+
+        dataRange: {
+            color: ['#1f610a', '#97b58d']
+        },
+
+        toolbox: {
+            color: ['#408829', '#408829', '#408829', '#408829']
+        },
+
+        tooltip: {
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            axisPointer: {
+                type: 'line',
+                lineStyle: {
+                    color: '#408829',
+                    type: 'dashed'
+                },
+                crossStyle: {
+                    color: '#408829'
+                },
+                shadowStyle: {
+                    color: 'rgba(200,200,200,0.3)'
+                }
+            }
+        },
+
+        dataZoom: {
+            dataBackgroundColor: '#eee',
+            fillerColor: 'rgba(64,136,41,0.2)',
+            handleColor: '#408829'
+        },
+        grid: {
+            borderWidth: 0
+        },
+
+        categoryAxis: {
+            axisLine: {
+                lineStyle: {
+                    color: '#408829'
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: ['#eee']
+                }
+            }
+        },
+
+        valueAxis: {
+            axisLine: {
+                lineStyle: {
+                    color: '#408829'
+                }
+            },
+            splitArea: {
+                show: true,
+                areaStyle: {
+                    color: ['rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)']
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: ['#eee']
+                }
+            }
+        },
+        timeline: {
+            lineStyle: {
+                color: '#408829'
+            },
+            controlStyle: {
+                normal: {color: '#408829'},
+                emphasis: {color: '#408829'}
+            }
+        },
+
+        k: {
+            itemStyle: {
+                normal: {
+                    color: '#68a54a',
+                    color0: '#a9cba2',
+                    lineStyle: {
+                        width: 1,
+                        color: '#408829',
+                        color0: '#86b379'
+                    }
+                }
+            }
+        },
+        map: {
+            itemStyle: {
+                normal: {
+                    areaStyle: {
+                        color: '#ddd'
+                    },
+                    label: {
+                        textStyle: {
+                            color: '#c12e34'
+                        }
+                    }
+                },
+                emphasis: {
+                    areaStyle: {
+                        color: '#99d2dd'
+                    },
+                    label: {
+                        textStyle: {
+                            color: '#c12e34'
+                        }
+                    }
+                }
+            }
+        },
+        force: {
+            itemStyle: {
+                normal: {
+                    linkStyle: {
+                        strokeColor: '#408829'
+                    }
+                }
+            }
+        },
+        chord: {
+            padding: 4,
+            itemStyle: {
+                normal: {
+                    lineStyle: {
+                        width: 1,
+                        color: 'rgba(128, 128, 128, 0.5)'
+                    },
+                    chordStyle: {
+                        lineStyle: {
+                            width: 1,
+                            color: 'rgba(128, 128, 128, 0.5)'
+                        }
+                    }
+                },
+                emphasis: {
+                    lineStyle: {
+                        width: 1,
+                        color: 'rgba(128, 128, 128, 0.5)'
+                    },
+                    chordStyle: {
+                        lineStyle: {
+                            width: 1,
+                            color: 'rgba(128, 128, 128, 0.5)'
+                        }
+                    }
+                }
+            }
+        },
+        gauge: {
+            startAngle: 225,
+            endAngle: -45,
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: [[0.2, '#86b379'], [0.8, '#68a54a'], [1, '#408829']],
+                    width: 8
+                }
+            },
+            axisTick: {
+                splitNumber: 10,
+                length: 12,
+                lineStyle: {
+                    color: 'auto'
+                }
+            },
+            axisLabel: {
+                textStyle: {
+                    color: 'auto'
+                }
+            },
+            splitLine: {
+                length: 18,
+                lineStyle: {
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                length: '90%',
+                color: 'auto'
+            },
+            title: {
+                textStyle: {
+                    color: '#333'
+                }
+            },
+            detail: {
+                textStyle: {
+                    color: 'auto'
+                }
+            }
+        },
+        textStyle: {
+            fontFamily: 'Arial, Verdana, sans-serif'
+        }
+    };
+</script>
+
+<script>
+
+
+
+
+
+
+
+    var userNum;
+    var workerNum;
+    var requesterNum;
+
+
+    $.ajax({
+        type: "GET",
+        url: "/userSize",
+        dataType: "json",
+        async :false,
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+//                console.log($('#allUserNumber'));
+                userNum = data.data;
+                $('#allUserNumber').text(userNum);
+
+//                    setuserNum(userNum);
+            }
+            else{
+                alert("Error user number get !");
+//                console.log("error_usernum :"+data.data);
+            }
+        },
+        error: function () {
+            alert("Network warning for user number get !");
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/workerSize",
+        dataType: "json",
+        async :false,
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                workerNum = data.data;
+                $("#worker").text(workerNum);
+            }
+            else{
+                alert("Error worker number get !");
+//                console.log("error_workernum :"+data.data);
+            }
+
+        },
+        error: function () {
+            alert("Network warning for worker number get !");
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/requesterSize",
+        dataType: "json",
+        async :false,
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                requesterNum = data.data;
+//                console.log("requesternum :"+requesterNum);
+                $("#requester").text(requesterNum);
+            }
+            else{
+                alert("Error requester number get !");
+                console.log("error_requesternum +"+data.data);
+            }
+
+        },
+        error: function () {
+            alert("Network warning for requester number get !");
+        }
+    });
+
+
+
+    var echartPieCollapse = echarts.init(document.getElementById('echart_pie2'), theme);
+    var test;
+    echartPieCollapse.setOption({
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x: 'center',
+            y: 'bottom',
+            data: ['rose1', 'rose2', 'rose3']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                magicType: {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                restore: {
+                    show: true,
+                    title: "Restore"
+                },
+                saveAsImage: {
+                    show: true,
+                    title: "Save Image"
+                }
+            }
+        },
+        calculable: true,
+        series: [{
+            name: 'Area Mode',
+            type: 'pie',
+            radius: [25, 90],
+            center: ['50%', 170],
+            roseType: 'area',
+            x: '50%',
+            max: 40,
+            sort: 'ascending',
+            data: [{
+                value: requesterNum,
+                name: '发起者'
+            }, {
+                value: workerNum,
+                name: '工人'
+            }, {
+                value: userNum,
+                name: '所有用户'
+            }]
+        }]
+    });
+
+
+
+
+
+    $.ajax({
+        type: "GET",
+        url: "/task/number",
+        dataType: "json",
+        async :false,
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                var taskNum = data.data;
+                console.log("tasknum: "+taskNum);
+                $("#taskNumber").text(taskNum);
+            }
+            else
+                alert("Error task number get !");
+        },
+        error: function () {
+            alert("Network warning for task number get !");
+        }
+    });
+
+
+
+
+
+    var requestlist;
+    $.ajax({
+        type: "GET",
+        url: "/task/monthRequestTask",
+        dataType: "json",
+        async :false,
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                requestlist = data.data;
+                console.log("requestlist: "+requestlist);
+            }
+            else
+                alert("Error get request month !");
+        },
+        error: function () {
+            alert("Network warning for request month !");
+        }
+    });
+    var finishlist;
+    $.ajax({
+        type: "GET",
+        url: "/task/monthFinishTask",
+        dataType: "json",
+        async :false,
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                finishlist = data.data;
+                console.log("finishList :"+finishlist);
+            }
+            else
+                alert("Error get finish month !");
+        },
+        error: function () {
+            alert("Network warning for finish month !");
+        }
+    });
+    //    条形图
+    var echartBar = echarts.init(document.getElementById('mainb'), theme);
+
+    echartBar.setOption({
+        title: {
+            text: '每月发起任务与完成任务',
+            subtext: '柱状统计图'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['发起任务数', '完成任务数']
+        },
+        toolbox: {
+            show: false
+        },
+        calculable: false,
+        xAxis: [{
+            type: 'category',
+            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        }],
+        yAxis: [{
+            type: 'value'
+        }],
+        series: [{
+            name: '发起任务数',
+            type: 'bar',
+            data: requestlist,
+            markPoint: {
+                data: [{
+                    type: 'max',
+                    name: '峰值'
+                }, {
+                    type: 'min',
+                    name: '谷值'
+                }]
+            },
+            markLine: {
+                data: [{
+                    type: 'average',
+                    name: '均值'
+                }]
+            }
+        }, {
+            name: '完成任务数',
+            type: 'bar',
+            data: finishlist,
+            markPoint: {
+                data: [{
+                    type: 'max',
+                    name: '峰值'
+                }, {
+                    type: 'min',
+                    name: '谷值'
+                }]
+            },
+            markLine: {
+                data: [{
+                    type: 'average',
+                    name: '均值'
+                }]
+            }
+        }]
+    });
+
+    //top 5 for worker and requesters
+    var top5worker;
+    $.ajax({
+        type: "GET",
+        url: "/task/top5Woker",
+        dataType: "json",
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                top5worker = data.data;
+
+                var wtable = $('#top5workers');
+                var html= '<thead>\n' +
+                    '                          <tr>\n' +
+                    '                            <th>User Name</th>\n' +
+                    '                            <th>Credits</th>\n' +
+                    '                            <th>Level</th>\n' +
+                    '                          </tr>\n' +
+                    '                          </thead>\n' +
+                    '                          <tbody>';
+
+
+                for (var i=top5worker.length-1;i>=0;i--) {
+                    html +='<tr>';
+                    html = html+ '<td>' +top5worker[i].username +'</td>';
+                    html = html+ '<td>' +top5worker[i].credit +'</td>';
+                    html = html+ '<td>' +top5worker[i].level +'</td>';
+                    html += '</tr>';
+                }
+                html +='</tbody>';
+                wtable.html(html);
+
+
+            }
+            else
+                alert("Error get top 5 worker !");
+        },
+        error: function () {
+            alert("Network warning top 5 worker !");
+        }
+    });
+    var top5requester;
+    $.ajax({
+        type: "GET",
+        url: "/task/top5Requester",
+        dataType: "json",
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                top5requester = data.data;
+                var rtable = $('#top5requesters');
+                var html= '<thead>\n' +
+                    '                          <tr>\n' +
+                    '                            <th>User Name</th>\n' +
+                    '                            <th>Credits</th>\n' +
+                    '                            <th>Level</th>\n' +
+                    '                          </tr>\n' +
+                    '                          </thead>\n' +
+                    '                          <tbody>';
+
+
+                for (var i=top5requester.length-1;i>=0;i--) {
+                    html +='<tr>';
+                    html = html+ '<td>' +top5requester[i].username +'</td>';
+                    html = html+ '<td>' +top5requester[i].credit +'</td>';
+                    html = html+ '<td>' +top5requester[i].level +'</td>';
+                    html += '</tr>';
+                }
+                html +='</tbody>';
+                rtable.html(html);
+
+
+            }
+            else
+                alert("Error get top 5 worker !");
+        },
+        error: function () {
+            alert("Network warning top 5 worker !");
+        }
+    });
+
+
+
+    var wholepicNum;
+    var partpicNum;
+    var areapicNum;
+
+    $.ajax({
+        type: "GET",
+        url: "/task/partTaskNum",
+        dataType: "json",
+        async :false,
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                partpicNum= data.data;
+            }
+            else{
+                alert("Error part task type get !");
+            }
+        },
+        error: function () {
+            alert("Network warning for part task type get !");
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/task/regTaskNum",
+        dataType: "json",
+        async :false,
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                areapicNum= data.data;
+            }
+            else{
+                alert("Error area task type get !");
+            }
+        },
+        error: function () {
+            alert("Network warning for area task type get !");
+        }
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/task/wholeTaskNum",
+        dataType: "json",
+        async :false,
+        data: {
+        },
+        success: function (data) {
+            if (data.success) {
+                wholepicNum= data.data;
+            }
+            else{
+                alert("Error whole task type get !");
+            }
+        },
+        error: function () {
+            alert("Network warning for whole task type get !");
+        }
+    });
+
+
+    var echartDonut = echarts.init(document.getElementById('echart_donut'), theme);
+
+    echartDonut.setOption({
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        calculable: true,
+        legend: {
+            x: 'center',
+            y: 'bottom',
+            data: ['整体标注', '部分标注', '区域标注']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                magicType: {
+                    show: true,
+                    type: ['pie', 'funnel'],
+                    option: {
+                        funnel: {
+                            x: '25%',
+                            width: '50%',
+                            funnelAlign: 'center',
+                            max: 1548
+                        }
+                    }
+                },
+                restore: {
+                    show: true,
+                    title: "Restore"
+                },
+                saveAsImage: {
+                    show: true,
+                    title: "Save Image"
+                }
+            }
+        },
+        series: [{
+            name: 'Access to the resource',
+            type: 'pie',
+            radius: ['35%', '55%'],
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true
+                    },
+                    labelLine: {
+                        show: true
+                    }
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        position: 'center',
+                        textStyle: {
+                            fontSize: '14',
+                            fontWeight: 'normal'
+                        }
+                    }
+                }
+            },
+            data: [{
+                value: wholepicNum,
+                name: '整体标注'
+            }, {
+                value: partpicNum,
+                name: '部分标注'
+            }, {
+                value: areapicNum,
+                name: '区域标注'
+            }]
+        }]
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

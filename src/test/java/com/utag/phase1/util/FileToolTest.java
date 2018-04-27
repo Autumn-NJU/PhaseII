@@ -10,10 +10,8 @@ public class FileToolTest {
 
     @Test
     public void listPictureName() {
-        List<String> list = FileTool.listPictureName("data/");
-        for(int i = 0; i < list.size(); i++){
-            System.out.println(list.get(i));
-        }
-        assertEquals(5, list.size());
+       List<String> list1 = FileTool.listPictureName(1 + "");
+       assertEquals(7, list1.size());
+       System.out.println(list1.get(0));
     }
 }

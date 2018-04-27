@@ -4,18 +4,19 @@ import com.utag.phase1.dao.DaoService.TaskDao;
 import com.utag.phase1.dao.DaoService.UserDao;
 import com.utag.phase1.dao.enumeration.TagType;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class TaskDaoImplTest {
-    @Autowired
-    private TaskDao taskDao;
-    @Autowired
-    private UserDao userDao;
+    private TaskDao taskDao =  new TaskDaoImpl();
+    private UserDao userDao =  new UserDaoImpl();
 
     private static final String FOLDER_NAME = "images";
     private static final String str = "admin";
+    private static final String pyStr = "py";
+    private static final String pyStr1 = "pypy233";
 
     @Test
     public void saveTask() {
@@ -38,8 +39,12 @@ public class TaskDaoImplTest {
 
     @Test
         public void claimTask(){
-            assertEquals(false, taskDao.claimTask(1, "worker2"));
-            assertEquals(true, taskDao.claimTask(2, "worker3"));
+        assertEquals(true, taskDao.claimTask(1, str));
+        assertEquals(true, taskDao.claimTask(2, str));
+        assertEquals(true, taskDao.claimTask(3, str));
+        assertEquals(true, taskDao.claimTask(1, pyStr));
+        assertEquals(true, taskDao.claimTask(2, pyStr));
+        assertEquals(true, taskDao.claimTask(3, pyStr));
     }
 
     @Test
@@ -52,5 +57,13 @@ public class TaskDaoImplTest {
     public void listTaskByWorker(){
         assertEquals(1, taskDao.listTaskByWorker("worker1").size());
         assertEquals(1, taskDao.listTaskByWorker("worker2").size());
+    }
+
+    @Test
+    public void listPartNum(){
+        List<Integer> list = taskDao.listPartNum();
+        assertEquals(4, list.size());
+        for (int i = 0; i < 4; i++)
+            System.out.println(list.get(i));
     }
 }

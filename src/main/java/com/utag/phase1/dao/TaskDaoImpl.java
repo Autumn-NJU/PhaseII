@@ -1,27 +1,23 @@
 package com.utag.phase1.dao;
 
-import com.utag.phase1.dao.DaoService.PictureDao;
+
 import com.utag.phase1.dao.DaoService.TaskDao;
 import com.utag.phase1.dao.DaoService.UserDao;
 import com.utag.phase1.dao.enumeration.TagType;
 import com.utag.phase1.domain.Task;
-import com.utag.phase1.util.DateHelper;
-import com.utag.phase1.util.FileTool;
-import com.utag.phase1.util.GsonTool;
+
+import com.utag.phase1.util.*;
+import com.utag.phase1.vo.TaskVO;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class TaskDaoImpl implements TaskDao{
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private PictureDao pictureDao;
 
     private static final String FILE_NAME = "task.json";
 
@@ -53,13 +49,19 @@ public class TaskDaoImpl implements TaskDao{
 
     @Override
     public boolean saveTask(String name, double reward, String requester, int workerLimit,
-                            String ddl, String description, String pictureFolder,  TagType tagType) {
+                            String ddl, String description, String fileName, TagType tagType) {
+        String fullFileName = "src/main/resources/static/task/zip/" + fileName;
+        System.out.println(fileName);
+        System.out.println("Full: " + fullFileName);
         int size = init().size();
         int id = init().size() == 0 ? 1 : init().get(size - 1).getId() + 1;
+        UnZipUtil.Unzip(fileName, id);
+        String unzipFilePath = "src/main/resources/static/task/files/" + id;
+
         String beginDate = DateHelper.getDate();
         Task task = new Task(id, name, reward, requester, workerLimit, null,
                 beginDate, ddl, description, null, null,
-                FileTool.listPictureName(pictureFolder), tagType);
+                FileTool.listPictureName(unzipFilePath), tagType);
         String jsonStr = GsonTool.toJson(task);
         /**
          * 暂定发布任务直接扣除 (单个奖赏 * 人数)
@@ -192,8 +194,6 @@ public class TaskDaoImpl implements TaskDao{
         return list;
     }
 
-
-
     @Override
     public boolean updateProcess(int taskID, String worker, double val){
         Map<String, Double> processMap = new HashMap<>();
@@ -214,5 +214,83 @@ public class TaskDaoImpl implements TaskDao{
 
         return FileTool.rewriteFile(FILE_NAME, strList);
     }
+
+    @Override
+    public List<TaskVO> listAllTask() {
+        List<TaskVO> list = new ArrayList<>();
+        for(Task t: init()){
+            list.add(TransVO.transTaskVO(t));
+        }
+        return list;
+    }
+
+    @Override
+    public Task getTaskById(int id) {
+        for(Task t: init()){
+            if(t.getId() == id){
+               return t;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public int getTaskNum() {
+        return init().size();
+    }
+
+    @Override
+    public List<Task> listAvailableTask() {
+        List<Task> list = new ArrayList<>();
+        for(Task t: init()){
+            if(t.getWorkerLimit() >= t.getWorkerList().size())
+                list.add(t);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Integer> listPartNum() {
+        List<Integer> list = new ArrayList<>();
+        list.add(init().size());
+        for(int i = 0; i < 3; i++){
+            list.add(0);
+        }
+
+
+        for(Task t: init()){
+            if(t.getTagType().equals(TagType.Part))
+                list.set(1, list.get(1) + 1);
+            else if(t.getTagType().equals(TagType.Whole))
+                list.set(2, list.get(2) + 1);
+            else
+                list.set(3, list.get(3) + 1);
+        }
+        return list;
+    }
+
+    @Override
+    public int getPartTaskNum() {
+       return getTaskSepNum(TagType.Part);
+    }
+
+    @Override
+    public int getWholeTaskNum() {
+        return getTaskSepNum(TagType.Whole);
+    }
+
+    @Override
+    public int getRegTaskNum() {
+        return getTaskSepNum(TagType.Split);
+    }
+
+    private int getTaskSepNum(TagType tagType){
+        int count = 0;
+        for(Task t: init())
+            if(t.getTagType().equals(tagType))
+                count++;
+        return count;
+    }
+
 
 }

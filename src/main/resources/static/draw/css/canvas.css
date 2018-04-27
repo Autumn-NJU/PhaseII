@@ -149,9 +149,15 @@ body{
 .cf:after {content:" ";display:block;height:0;clear:both;visibility:hidden;}
 
 #draw{
-	width: 960px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 10px;
+    left:60px;
+    position: relative
+	/*width: 960px;
 	height: auto;
-	margin: 0 auto;
+	margin: 0 auto;*/
 	/*background: whitesmoke;*/
 }
 
@@ -262,6 +268,7 @@ canvas{
 
 
 #showHistory{
+
 	width: 960px;
 	height: auto;
 	margin-top: 20px;

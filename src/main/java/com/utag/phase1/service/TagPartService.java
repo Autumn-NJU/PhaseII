@@ -10,16 +10,11 @@ public interface TagPartService {
 
     /**
      *
-     * @param imageID
-     * @param x1
-     * @param x2
-     * @param y1
-     * @param y2
-     * @param description
+     * @param tagPartList
      * @return
+     * @throws IOException
      */
-    public Response<Boolean> saveTagPart(String imageID, double x1, double x2,
-                                         double y1, double y2, String description) throws IOException;
+    public Response<Boolean> saveTagPart(List<TagPart> tagPartList, String imageId) throws IOException;
 
 
     /**
