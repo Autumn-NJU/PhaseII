@@ -48,7 +48,7 @@ function getImgSetUrl(userName, taskID){
             }
         },
         error: function () {
-            alert("Network warning for getting user table!");
+            alert("Network warning for getting user table/worker-Picture!");
         }
     });
 }

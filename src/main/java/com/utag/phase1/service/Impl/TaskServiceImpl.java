@@ -29,7 +29,6 @@ public class TaskServiceImpl implements TaskService {
     @Autowired
     PictureDao pictureDao;
 
-    private static final String FOLDER_NAME = "images";
 
     @Override
     public Response<Boolean> saveTask(String name, double reward, String requester, int workerLimit, String ddl,
@@ -44,6 +43,7 @@ public class TaskServiceImpl implements TaskService {
             }
             userDao.updateProperty(requester, property);
             taskDao.saveTask(name, reward, requester, workerLimit, ddl, description, fileName, tagType);
+
             return new Response<>(true, "Succeed to save task!");
         }catch (Exception ex){
             ex.printStackTrace();
@@ -80,7 +80,7 @@ public class TaskServiceImpl implements TaskService {
     public Response<Boolean> claimTask(int id, String worker) {
         try{
             taskDao.claimTask(id, worker);
-            pictureDao.savePictureList(id, worker, FileTool.listPictureName(FOLDER_NAME));
+            pictureDao.savePictureList(id, worker, FileTool.listPictureName(id + ""));
             return new Response<>(true, "Succeed to claim task!");
         }catch (Exception ex){
             ex.printStackTrace();
@@ -295,7 +295,7 @@ public class TaskServiceImpl implements TaskService {
         }
         for(TaskVO t: taskDao.listAllTask()){
             String date = t.getDdl();
-            int m = DateHelper.getMonth(date, 0, 2);
+            int m = DateHelper.getMonth(date, 5, 7);
             int idx = m - 1;    // 确认过的眼神, 0 - 11
             int val = list.get(idx) + 1;
             list.set(idx, val);
@@ -359,6 +359,16 @@ public class TaskServiceImpl implements TaskService {
         }catch (Exception ex) {
             ex.printStackTrace();
             return new Response<>(false, "Fail to get split task number!");
+        }
+    }
+
+    @Override
+    public Response<TagType> getTagType(int taskId) {
+        try{
+            return new Response<>(true, taskDao.getTagType(taskId), "Succeed to get tag type!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail to get tag type!");
         }
     }
 

@@ -8,7 +8,6 @@ import com.utag.phase1.domain.Task;
 
 import com.utag.phase1.util.*;
 import com.utag.phase1.vo.TaskVO;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -53,15 +52,13 @@ public class TaskDaoImpl implements TaskDao{
         String fullFileName = "src/main/resources/static/task/zip/" + fileName;
         System.out.println(fileName);
         System.out.println("Full: " + fullFileName);
-        int size = init().size();
-        int id = init().size() == 0 ? 1 : init().get(size - 1).getId() + 1;
+        int id = getId() + 1;
         UnZipUtil.Unzip(fileName, id);
-        String unzipFilePath = "src/main/resources/static/task/files/" + id;
 
         String beginDate = DateHelper.getDate();
         Task task = new Task(id, name, reward, requester, workerLimit, null,
                 beginDate, ddl, description, null, null,
-                FileTool.listPictureName(unzipFilePath), tagType);
+                FileTool.listPictureName(id + ""), tagType);
         String jsonStr = GsonTool.toJson(task);
         /**
          * 暂定发布任务直接扣除 (单个奖赏 * 人数)
@@ -196,7 +193,7 @@ public class TaskDaoImpl implements TaskDao{
 
     @Override
     public boolean updateProcess(int taskID, String worker, double val){
-        Map<String, Double> processMap = new HashMap<>();
+        Map<String, Double> processMap;
         ArrayList<String> strList = new ArrayList<>();
         for(Task t: init()){
             if(t.getId() == taskID) {
@@ -243,7 +240,9 @@ public class TaskDaoImpl implements TaskDao{
     public List<Task> listAvailableTask() {
         List<Task> list = new ArrayList<>();
         for(Task t: init()){
-            if(t.getWorkerLimit() >= t.getWorkerList().size())
+            if(t.getWorkerList() == null)
+                list.add(t);
+            else if(t.getWorkerLimit() >= t.getWorkerList().size())
                 list.add(t);
         }
         return list;
@@ -284,12 +283,28 @@ public class TaskDaoImpl implements TaskDao{
         return getTaskSepNum(TagType.Split);
     }
 
+    @Override
+    public TagType getTagType(int taskId) {
+        for(Task t: init()){
+            if (t.getId() == taskId)
+                return t.getTagType();
+        }
+        return null;
+    }
+
     private int getTaskSepNum(TagType tagType){
         int count = 0;
         for(Task t: init())
             if(t.getTagType().equals(tagType))
                 count++;
         return count;
+    }
+
+    @Override
+    public int getId(){
+        int size = init().size();
+        int id = init().size() == 0 ? 1 : init().get(size - 1).getId();
+        return id;
     }
 
 

@@ -176,7 +176,7 @@ public class TaskController {
 
     /**
      * 给出所有路径
-     * @param taskId
+     * @param taskId "../task/files/"
      * @return
      */
     @RequestMapping(value = "/listPicturePath", method = RequestMethod.GET)
@@ -207,6 +207,18 @@ public class TaskController {
     @ResponseBody
     public Response<Integer> getRegTaskNum(){
         return taskService.getRegTaskNum();
+    }
+
+
+    /**
+     * 根据id给出标注类型
+     * @param taskId
+     * @return
+     */
+    @RequestMapping(value = "/getTagType", method = RequestMethod.GET)
+    @ResponseBody
+    public Response<TagType> getTagType(int taskId){
+        return taskService.getTagType(taskId);
     }
 
     //save file

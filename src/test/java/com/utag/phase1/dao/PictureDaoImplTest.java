@@ -17,7 +17,7 @@ public class PictureDaoImplTest {
 
     @Test
     public void tagPicture() {
-        assertEquals(true, pictureDao.tagPicture(picture.getId()));
+        assertEquals(true, pictureDao.tagPicture("1-1-py"));
     }
 
     @Test
@@ -27,6 +27,16 @@ public class PictureDaoImplTest {
 
     @Test
     public void listPictureName(){
-        assertEquals(9, pictureDao.listPictureName().size());
+        assertEquals(7, pictureDao.listPictureName(1).size());
+    }
+
+    @Test
+    public void savePicture(){
+        assertEquals(true, pictureDao.savePicture(1, "py", "1"));
+    }
+
+    @Test
+    public void testIsTagged(){
+        assertEquals(true, pictureDao.isTagged(1, "1", "py"));
     }
 }

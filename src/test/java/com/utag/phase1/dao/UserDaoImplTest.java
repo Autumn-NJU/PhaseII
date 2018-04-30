@@ -50,7 +50,7 @@ public class UserDaoImplTest {
 
     @Test
     public void canLogin() {
-        assertEquals(false, userDao.canLogin(str, str));
+        assertEquals(true, userDao.canLogin("Panxy", "123"));
     }
 
     @Test

@@ -52,8 +52,9 @@ ul {
     position: relative;
     width: 960px;
     height: 580px;
-    left: 60px;
-    top: 5px;
+    margin:0 300px;
+    /*left: 60px;*/
+    /*top: 5px;*/
 }
 
 .placeholder {

@@ -1,3 +1,5 @@
-{"username":"admin","password":"admin","credit":30,"property":9998899.0,"level":0,"experience":60.0,"vip":0.0,"userType":"Requester"}
-{"username":"py","password":"py","credit":0,"property":0.0,"level":0,"experience":0.0,"vip":0.0,"userType":"Requester"}
-{"username":"pypy233","password":"pypy233","credit":0,"property":0.0,"level":0,"experience":0.0,"vip":0.0,"userType":"Worker"}
+{"username":"Cris","password":"123","credit":0,"property":10000.0,"level":0,"experience":0.0,"vip":0.0,"userType":"Worker"}
+{"username":"Panxy","password":"123","credit":0,"property":10000.0,"level":0,"experience":0.0,"vip":0.0,"userType":"Worker"}
+{"username":"admin","password":"admin","credit":0,"property":10000.0,"level":0,"experience":0.0,"vip":0.0,"userType":"Worker"}
+{"username":"py","password":"123","credit":0,"property":10000.0,"level":0,"experience":0.0,"vip":0.0,"userType":"Worker"}
+{"username":"pypy233","password":"123","credit":0,"property":10000.0,"level":0,"experience":0.0,"vip":0.0,"userType":"Worker"}

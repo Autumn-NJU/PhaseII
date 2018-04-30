@@ -27,15 +27,15 @@
 ### 方法1:
 <ol>
 	<li>下载项目压缩文件 http://114.215.188.21/161250096_UTag/UTag_Phase_I/blob/master/src.zip</li>
-	<li>解压文件"src"</li>
-	<li>命令行进入"src"目录</li>
+	<li>解压文件"Utag_products.zip"</li>
+	<li>命令行进入"Utag_products.zip"目录</li>
 	<li>输入命令: java -jar Phase_I-0.0.1-SNAPSHOT.jar</li>
 </ol>
 
 ###  Method2:
 <ol> 
 <li>直接下载源文件</li>
-git clone http://114.215.188.21/161250096_UTag/UTag_Phase_I.git</li>
+git clone http://114.215.188.21/161250096_UTag/UTag_Phase_II.git</li>
 <li>
 作为maven项目导入</li>
 </ol>
@@ -47,6 +47,32 @@ git clone http://114.215.188.21/161250096_UTag/UTag_Phase_I.git</li>
 <li>系统初始设定账户(admin/admin)，使用默认管理员账户登入(因为注册界面没做好，暂不支持注册)</li>
 <li>使用标注界面加载和标注图片</li>
 </ol>
+
+## 大不同
+和版本一相比，我们做了:
+<ol><li>加入注册功能，有需要的筒子可以注册了
+</li>
+<li>任务发布和获取的新模块</li><li>
+标注更炫酷！</li><li>数据可视化的统计图表(管理员用户admin-admin即可解锁)</li></ol>
+
+## 介绍和截图
+和产品一相同，任何标注问题, [阅读这里](http://114.215.188.21/161250096_UTag/UTag_Phase_I/blob/master/README.md)
+我们的标注界面一分为几来应对不同情况:![](info/tag2.jpg)
+
+让我们体验一下任务模块，一切都是那么与众不同
+![](info/req-MyTask.PNG)
+![](info/req-TaskMarket.PNG)
+<br>
+<br>
+<br>
+View the details:
+![](info/req-ViewDetails.PNG)
+![](info/req-ViewDetails-2.PNG)
+
+管理员也许想得到他想要的:
+![](info/count1.png)
+![](info/count2.png)
+
 ## 介绍和截图
 首先使用默认管理员账户(admin/admin)登录系统：
 ![](info/login.png)
@@ -144,5 +170,6 @@ git clone http://114.215.188.21/161250096_UTag/UTag_Phase_I.git</li>
 ## 感谢
 * 向被使用代码的人表示感谢
 * ivan(GitHub工程 draw)
+* gentella
 * etc
 

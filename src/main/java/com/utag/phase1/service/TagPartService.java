@@ -1,6 +1,7 @@
 package com.utag.phase1.service;
 
 import com.utag.phase1.domain.TagPart;
+import com.utag.phase1.model.TagPartModel;
 import com.utag.phase1.util.Response;
 
 import java.io.IOException;
@@ -10,11 +11,17 @@ public interface TagPartService {
 
     /**
      *
-     * @param tagPartList
+     * @param imageId
+     * @param x1
+     * @param x2
+     * @param y1
+     * @param y2
+     * @param description
      * @return
      * @throws IOException
      */
-    public Response<Boolean> saveTagPart(List<TagPart> tagPartList, String imageId) throws IOException;
+    public Response<Boolean> saveTagPart(String imageId, double x1, double x2, double y1, double y2,
+                                         String description) throws IOException;
 
 
     /**
@@ -55,5 +62,10 @@ public interface TagPartService {
     public Response<Integer> getDescriptionLength(String imageID, double x1, double x2, double y1,
                                                    double y2) throws IOException;
 
-
+    /**
+     * 给出标注结果
+     * @param imageId
+     * @return
+     */
+    public Response<List<TagPart>> listPartTag(String imageId);
 }

@@ -6,8 +6,8 @@ import com.utag.phase1.util.FileTool;
 import com.utag.phase1.util.GsonTool;
 import org.springframework.stereotype.Repository;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class TagWholeDaoImpl implements TagWholeDao {
@@ -22,7 +22,6 @@ public class TagWholeDaoImpl implements TagWholeDao {
         }
 
         return imageList;
-
     }
 
     @Override
@@ -71,7 +70,7 @@ public class TagWholeDaoImpl implements TagWholeDao {
     }
 
     @Override
-    public int getDescriptionLength(String imageID) throws IOException{
+    public int getDescriptionLength(String imageID) {
         ArrayList<TagWhole> list = init();
 
         for(TagWhole t: list){
@@ -81,5 +80,14 @@ public class TagWholeDaoImpl implements TagWholeDao {
             }
         }
         return 0;
+    }
+
+    @Override
+    public String listWholeTag(String imageId) {
+        for(TagWhole tagWhole: init()){
+            if(tagWhole.getImageID().equals(imageId))
+                return tagWhole.getDescription();
+        }
+        return "Unchecked";
     }
 }

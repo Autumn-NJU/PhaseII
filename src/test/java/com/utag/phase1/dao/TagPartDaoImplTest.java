@@ -29,9 +29,7 @@ public class TagPartDaoImplTest {
 
     @Test
     public void deleteTagPart() throws IOException{
-        assertEquals(true, tagPartDao.deleteTagPart("1"));
-        assertEquals(true, tagPartDao.deleteTagPart("2"));
-        assertEquals(true, tagPartDao.deleteTagPart("3"));
+        assertEquals(true, tagPartDao.deleteTagPart("src/main/resources/static/task/files/IMG_8503.JPG"));
     }
 
     @Test
@@ -45,5 +43,10 @@ public class TagPartDaoImplTest {
     public void getDescriptionLengthTest() throws IOException{
         assertEquals(0, tagPartDao.getDescriptionLength("1", 0, 1, 0, 1));
         assertEquals(0, tagPartDao.getDescriptionLength("1", 1, 0, 1, 0));
+    }
+
+    @Test
+    public void listTagPart() throws IOException{
+        assertEquals(3, tagPartDao.listPartTag("src/main/resources/static/task/files/照片图库.png").size());
     }
 }

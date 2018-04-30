@@ -55,4 +55,11 @@ public interface UserService {
      * @return
      */
     Response<Integer> getRequesterNum();
+
+    /**
+     * 根据用户名返回用户信息
+     * @param userName
+     * @return
+     */
+    Response<UserVO> getUserByName(String userName);
 }

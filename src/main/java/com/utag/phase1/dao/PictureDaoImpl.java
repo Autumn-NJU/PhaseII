@@ -15,7 +15,7 @@ import java.util.Map;
 public class PictureDaoImpl implements PictureDao {
 
     private static final String FILE_NAME = "pictures.json";
-    private static final String FOLDER_NAME = "images/";
+    private static final String FOLDER_NAME = "src/main/resources/static/task/files/";
 
 
     private ArrayList<Picture> init(){
@@ -29,25 +29,28 @@ public class PictureDaoImpl implements PictureDao {
 
 
     @Override
+    public boolean savePicture(int taskId, String worker, String pictureName) {
+        Picture p = new Picture(taskId, worker, pictureName);
+        String jsonStr = GsonTool.toJson(p);
+        return FileTool.writeFile(FILE_NAME, jsonStr);
+    }
+
+    @Override
     public boolean tagPicture(String id) {
         ArrayList<Picture> list = init();
         ArrayList<String> pictureStrList = new ArrayList<>();
         int taskID = -1;
-        String worker = null;
         Map<String, Double> map = new HashMap<>();
         for(Picture p: list){
             if(p.getId().equals(id)){
                 p.setTagged(true);
                 taskID = p.getTaskID();
-                worker = p.getWorker();
             }
             String jsonStr = GsonTool.toJson(p);
             pictureStrList.add(jsonStr);
         }
-        if(taskID == -1)
-            return false;
 
-        return FileTool.rewriteFile(FILE_NAME, pictureStrList);
+        return taskID != -1 && FileTool.rewriteFile(FILE_NAME, pictureStrList);
     }
 
     @Override
@@ -56,14 +59,25 @@ public class PictureDaoImpl implements PictureDao {
         ArrayList<Picture> pictureList = init();
         for(Picture p: pictureList){
             if(p.getTaskID() == taskID && p.getWorker().equals(worker) && !p.isTagged())
-                list.add(p.getImageID());
+                list.add(FOLDER_NAME + taskID + "/" + p.getImageID());
         }
         return list;
     }
 
     @Override
-    public List<String> listPictureName() {
-        return FileTool.listPictureName(FOLDER_NAME);
+    public List<String> listTaggedPicture(int taskId, String worker) {
+        List<String> list = new ArrayList<>();
+        ArrayList<Picture> pictureList = init();
+        for(Picture p: pictureList){
+            if(p.getTaskID() == taskId && p.getWorker().equals(worker) && p.isTagged())
+                list.add(FOLDER_NAME + taskId + "/" + p.getImageID());
+        }
+        return list;
+    }
+
+    @Override
+    public List<String> listPictureName(int taskID) {
+        return FileTool.listPictureName(taskID + "");
     }
 
     @Override
@@ -91,7 +105,18 @@ public class PictureDaoImpl implements PictureDao {
             if(p.getTaskID() == taskID && p.getWorker().equals(worker))
                 sum++;
         }
-        return sum * 1.0 / listUntaggedPicture(taskID, worker).size();
+        return sum * 1.0 / (listUntaggedPicture(taskID, worker).size() +
+                listTaggedPicture(taskID, worker).size());
     }
+
+    @Override
+    public boolean isTagged(int taskId, String worker, String imageId) {
+        for(Picture p: init()){
+            if(p.getWorker().equals(worker) && p.getTaskID() == taskId && p.getImageID().equals(imageId))
+                return p.isTagged();
+        }
+        return false;
+    }
+
 
 }

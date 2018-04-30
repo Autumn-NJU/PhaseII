@@ -101,5 +101,18 @@ public class UserServiceImpl implements UserService  {
         }
     }
 
+    @Override
+    public Response<UserVO> getUserByName(String userName) {
+        try{
+            User user = userDao.getUserByName(userName);
+            UserVO userVO = TransVO.transUserVO(user);
+            return new Response<>(true, userVO, "Succeed to get user info!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail to get user info!");
+        }
+
+    }
+
 
 }

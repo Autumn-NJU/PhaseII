@@ -147,4 +147,11 @@ public interface TaskService {
      * @return
      */
     Response<Integer> getRegTaskNum();
+
+    /**
+     * 给出标注类型
+     * @param taskId
+     * @return
+     */
+    Response<TagType> getTagType(int taskId);
 }

@@ -37,6 +37,7 @@ public class Picture implements Serializable{
     public Picture(int taskID, String imageID, String worker) {
         this.taskID = taskID;
         this.imageID = imageID;
+        this.worker = worker;
         this.id = taskID + "-" + worker + "-" + imageID;
         this.isTagged = false;
     }

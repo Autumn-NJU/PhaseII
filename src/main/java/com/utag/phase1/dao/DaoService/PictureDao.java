@@ -4,6 +4,16 @@ import java.util.List;
 
 public interface PictureDao {
     /**
+     *
+     * @param taskId
+     * @param worker
+     * @param pictureName
+     * @return
+     */
+    boolean savePicture(int taskId, String worker, String pictureName);
+
+
+    /**
      * 图片被标注，在标注的同时更新进度信息
      * @param id
      * @return
@@ -19,10 +29,18 @@ public interface PictureDao {
     List<String> listUntaggedPicture(int taskID, String worker);
 
     /**
+     * 给出标注的图片
+     * @param taskId
+     * @param worker
+     * @return
+     */
+    List<String> listTaggedPicture(int taskId, String worker);
+
+    /**
      * 初始化标注图片，返回图片名的list
      * @return
      */
-    List<String> listPictureName();
+    List<String> listPictureName(int taskId);
 
     /**
      * 发布任务的同时保存图片名
@@ -44,4 +62,15 @@ public interface PictureDao {
      * @return
      */
     double calculateProcess(int taskID, String worker);
+
+    /**
+     *
+     * @param taskId
+     * @param worker
+     * @param imageId
+     * @return
+     */
+    boolean isTagged(int taskId, String worker, String imageId);
+
+
 }

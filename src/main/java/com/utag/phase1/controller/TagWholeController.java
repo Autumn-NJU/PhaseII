@@ -39,4 +39,10 @@ public class TagWholeController {
     public Response<Integer> getDescriptionLength(String imageID) throws IOException{
         return tagWholeService.getDescriptionLength(imageID);
     }
+
+    @RequestMapping(value = "/getWholeTag", method = RequestMethod.GET)
+    @ResponseBody
+    public Response<String> getWholeTag(String imageId) throws IOException{
+        return tagWholeService.getTagWhole(imageId);
+    }
 }

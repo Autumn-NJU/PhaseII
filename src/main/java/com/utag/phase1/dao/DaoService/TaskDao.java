@@ -128,4 +128,18 @@ public interface TaskDao {
      */
     int getRegTaskNum();
 
+    /**
+     * 根据idg
+     * @param taskId
+     * @return
+     */
+    TagType getTagType(int taskId);
+
+
+    /**
+     *
+     * @return
+     */
+    int getId();
+
 }

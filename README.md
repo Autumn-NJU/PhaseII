@@ -2,7 +2,7 @@
 <br>
 # UTag
 
-## UTag - A Crowdsourcing Tags Tool
+## UTag - A Crowdsourcing Tags Tool(Version 2)
 
 <br>
 ![](info/autumn.png)<br>
@@ -29,8 +29,8 @@ A web tag tool, Easy for configuration, Fully functional, Smooth interface, Quit
 ## Installation
 ### Method1:
 <ol>
-	<li>You can download the install folder from http://114.215.188.21/161250096_UTag/UTag_Phase_I/blob/master/src.zip</li>
-	<li>Unzip folder "src"</li>
+	<li>You can download the install folder from http://114.215.188.21/161250096_UTag/UTag_Phase_II.git</li>
+	<li>Unzip folder "Utag_products.zip"</li>
 	<li>Use command line to enter the folder</li>
 	<li>Enter: java -jar Phase_I-0.0.1-SNAPSHOT.jar</li>
 </ol>
@@ -38,7 +38,7 @@ A web tag tool, Easy for configuration, Fully functional, Smooth interface, Quit
 ###  Method2:
 <ol> 
 <li>You can download source file directly</li>
-git clone http://114.215.188.21/161250096_UTag/UTag_Phase_I.git</li>
+git clone http://114.215.188.21/161250096_UTag/UTag_Phase_II.git</li>
 <li>
 Then import or open the maven project.</li>
 </ol>
@@ -47,44 +47,34 @@ Then import or open the maven project.</li>
 <ol>
 <li>Enter: java -jar Phase_I-0.0.1-SNAPSHOT.jar or Run the class: PhaseIApplication.java</li>
 <li>Use Chrome or Firefox open the url: http://localhost:8080/</li>
-<li>Given a admin user(admin/admin exists), then user the default account to sign in.(Register frame is to be updated, so use admin site)</li>
+<li>Given a admin user(admin/admin exists), then user the default account to sign in.(Register frame is updated, so you can also register for a new user)</li>
 <li>Use the tag frame to tag the picture loaded</li>
 </ol>
 
-## Introduction And Screenshots
-First, use the default account admin/admin to log in the system:
-![](info/login.png)
-
-Then, move to the tag page:
-![](info/main.png)
-<br>
-The left side is the auxiliary toolbar, it contains:
-<ul>
-<li>
-Line tool to tag</li>
-<li>Box tool to tag</li>
-<li>Redo</li>
-<li>Anti redo</li>
-<li>Delete the whole picture</li>
-<li>Save the picture on the web</li>
-</ul>
-
-While at the bottom of the page:
-<ul>
-	<li>"PREVIOUS PICTURE" and "NEXT PICTURE" button control the load line of picture</li>
-	<li>The input field is the tag to be entered</li>
-	<li>The button "Check" save the tag result</li>
-</ul>
-
-Tips:
-	<ul>
-	<li>If you want to update the tag by box, click the box related and enter the tag again, then chek.(It will occur a blank, which is the sign of updated tag. We suggest that you use redo more than click to update)</li>
-	<li>We support the service of save on the server and you can download it, the path is your default download path.
-	![](info/save.png)
-	
+## What is Different
+Different from version1, we have done the following:
+<ol><li>Add the register function, so that you can create your own account if necessary.
 </li>
-</ul>
+<li>New Module of task request and claim</li><li>
+Cool tag!</li><li>Statistical charts can be seen in admin module.(Just use admin-admin to login)</li></ol>
 
+## Introduction And Screenshots
+Tag is similar to product1, any question, [read it](http://114.215.188.21/161250096_UTag/UTag_Phase_I/blob/master/README.md)
+We change the ui to different parts to meet various tag requirments, like:![](info/tag2.jpg)
+
+Let's move to task module, as a online tag platform, you can have a great experience of task. Claim or request, so simple:
+![](info/req-MyTask.PNG)
+![](info/req-TaskMarket.PNG)
+<br>
+<br>
+<br>
+View the details:
+![](info/req-ViewDetails.PNG)
+![](info/req-ViewDetails-2.PNG)
+
+Or the admin get the information of he wants:
+![](info/count1.png)
+![](info/count2.png)
 ## Tag
 <ul>
 <li>Whole picture tag: Just enter the tag and check; 
@@ -98,22 +88,8 @@ The line doesn't support the update, just redo or delete if necessary</li>
 
 ## Demo
 ### Whole picture tag and update
-![](info/cat.png)
-<br>
-<br>
-![](info/cat_update.png)
+![](info/tag2.jpg)
 
-### Part picture tag and update
-![](info/part_picture.png)
-<br>
-<br>
-![](info/update_part.png)
-
-### Spilt the area and update
-![](info/line.png)
-<br>
-<br>
-![](info/line_update.png)
 
 ## Data
 The data can be seen in json files in resources/static/data, such as part_pictures.json

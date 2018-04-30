@@ -3,6 +3,7 @@ package com.utag.phase1.dao;
 import com.utag.phase1.dao.DaoService.TaskDao;
 import com.utag.phase1.dao.DaoService.UserDao;
 import com.utag.phase1.dao.enumeration.TagType;
+import com.utag.phase1.domain.Task;
 import org.junit.Test;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class TaskDaoImplTest {
     public void saveTask() {
        assertEquals(true, taskDao.saveTask("任务2",
                2.33333, str, 10, "2018-10-11 19:19:19",
-               "task2", FOLDER_NAME, TagType.Whole));
+               "task2", FOLDER_NAME, TagType.Part));
     }
 
     @Test
@@ -39,12 +40,12 @@ public class TaskDaoImplTest {
 
     @Test
         public void claimTask(){
-        assertEquals(true, taskDao.claimTask(1, str));
-        assertEquals(true, taskDao.claimTask(2, str));
-        assertEquals(true, taskDao.claimTask(3, str));
-        assertEquals(true, taskDao.claimTask(1, pyStr));
-        assertEquals(true, taskDao.claimTask(2, pyStr));
-        assertEquals(true, taskDao.claimTask(3, pyStr));
+        assertEquals(true, taskDao.claimTask(6, str));
+        assertEquals(true, taskDao.claimTask(7, str));
+        assertEquals(true, taskDao.claimTask(8, str));
+        assertEquals(true, taskDao.claimTask(6, pyStr));
+        assertEquals(true, taskDao.claimTask(7, pyStr));
+        assertEquals(true, taskDao.claimTask(8, pyStr));
     }
 
     @Test
@@ -65,5 +66,15 @@ public class TaskDaoImplTest {
         assertEquals(4, list.size());
         for (int i = 0; i < 4; i++)
             System.out.println(list.get(i));
+    }
+
+    @Test
+    public void listAvailableTask(){
+        List<Task> list = taskDao.listAvailableTask();
+        assertEquals(6, list.size());
+        for (Task t : list) {
+            System.out.println("id: " + t.getId() + " " + t.getRequester() + " " +
+                    t.getBeginDate() + " " + t.getDdl());
+        }
     }
 }

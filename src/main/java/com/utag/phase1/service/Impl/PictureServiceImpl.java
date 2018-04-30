@@ -19,14 +19,12 @@ public class PictureServiceImpl implements PictureService {
     private TaskDao taskDao;
 
     @Override
-    public Response<Boolean> tagPicture(String id) {
+    public Response<Boolean> tagPicture(int taskId, String worker, String pictureName) {
         try{
+            String id = taskId + "-" + worker + "-" + pictureName;
             pictureDao.tagPicture(id);
-            String[] arr = id.split("-");
-            int taskID = Integer.parseInt(arr[0]);
-            String worker = arr[1];
-            double process = pictureDao.calculateProcess(taskID, worker);
-            taskDao.updateProcess(taskID, worker, process);
+            double process = pictureDao.calculateProcess(taskId, worker);
+            taskDao.updateProcess(taskId, worker, process);
             return new Response<>(true, "Succeed to tag picture!");
         }catch (Exception ex){
             ex.printStackTrace();
@@ -38,11 +36,34 @@ public class PictureServiceImpl implements PictureService {
     public Response<List<String>> listUntaggedPicture(int taskID, String worker) {
         try{
             List<String> strVO = pictureDao.listUntaggedPicture(taskID, worker);
-            return new Response<List<String>>(true,  strVO,
+            return new Response<>(true, strVO,
                     "Succeed to list untagged picture!");
         }catch (Exception ex){
             ex.printStackTrace();
             return new Response<>(false, "Fail to list untagged pictures!");
+        }
+    }
+
+    @Override
+    public Response<List<String>> listTaggedPicture(int taskID, String worker) {
+        try{
+            List<String> strVO = pictureDao.listTaggedPicture(taskID, worker);
+            return new Response<>(true, strVO,
+                    "Succeed to list tagged picture!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail to list tagged pictures!");
+        }
+    }
+
+    @Override
+    public Response<Boolean> isTagged(int taskId, String worker, String imageId) {
+        try {
+            pictureDao.isTagged(taskId, worker, imageId);
+            return new Response<>(true, "Succeed to get tag or whether!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail yo tag or whether!");
         }
     }
 }

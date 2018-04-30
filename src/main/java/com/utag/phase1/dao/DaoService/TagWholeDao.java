@@ -1,6 +1,9 @@
 package com.utag.phase1.dao.DaoService;
 
+import com.utag.phase1.domain.TagWhole;
+
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 整张图片标注的数据层服务
@@ -37,5 +40,12 @@ public interface TagWholeDao {
      * @return
      */
     int getDescriptionLength(String imageID) throws IOException;
+
+    /**
+     *
+     * @param imageId
+     * @return
+     */
+    String listWholeTag(String imageId);
 
 }

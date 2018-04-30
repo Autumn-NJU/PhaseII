@@ -40,7 +40,8 @@ var $imgAreaEl = $('#img-area-self'),//图片放置元素
     tagData = [],//标签数据name,color
     winScale = $imgAreaEl.width() / $imgAreaEl.height(),//图片放置区域比例
     labelIdFinish = [],
-    idOfImg = 0;
+    idOfImg = 0,
+    imageId; //str
 
 
 // 全局提示框
@@ -60,25 +61,6 @@ var _placeHolderEl = {
         this.el.hide();
     }
 };
-getImage(true);
-
-// 获取图片
-function getImage(back) {
-    // _placeHolderEl.setText('新图片加载中......');
-    if (back) {
-        idOfImg += 1;
-        if (idOfImg > 22)
-            idOfImg -= 22;
-    }
-    else {
-        idOfImg -= 1;
-        if (idOfImg < 1)
-            idOfImg += 22;
-    }
-
-    var pic = 'images/images' + idOfImg.toString() + '.png';
-    adaptionImg(pic, $('#img-self'));
-}
 
 // 图片自适应
 function adaptionImg(url, el, callback) {
@@ -205,7 +187,7 @@ function newLabelMouseDown(event) {
         var pencilLabel = {
             x: mouse.x,
             y: mouse.y,
-            el: $($('#tpl-area').html()),
+            el: $($('#pencil-area').html()),
             isExist: false,
             color: color,
             dotList: []
@@ -501,8 +483,8 @@ function dealWH(type, num) {
 // 帧率显示
 var stats = new Stats();
 stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-stats.dom.style.cssText = 'position:fixed;top:0;right:0;cursor:pointer;opacity:0.9;z-index:10000';
-document.getElementById("img-area-self").appendChild(stats.dom);
+// stats.dom.style.cssText = 'position:fixed;top:0;right:0;cursor:pointer;opacity:0.9;z-index:10000';
+// document.getElementById("img-area-self").appendChild(stats.dom);
 
 // 按浏览器刷新率渲染标注
 function animate() {
@@ -534,38 +516,36 @@ function animate() {
 }
 
 // 根据数据还原框选
-function restore(data) {
-    restoreLeft(data);
-    restoreRight(data);
-    // 差异信息显示
-    $('.label-diff').html(diffText[data.diffType] + '<br/>' + data.diffDesc);
+function restore(pic, data, length) {
+    restoreLeft(pic, data, length);
+    // restoreRight(data);
+    // // 差异信息显示
+    // $('.label-diff').html(diffText[data.diffType] + '<br/>' + data.diffDesc);
 }
 
-function restoreLeft(data, el) {
+function restoreLeft(pic, data, length, el) {
     var t = el ? $(el) : $('#img-self');
-    adaptionImg(data.pic, t, function () {
+    adaptionImg(pic, t, function () {
         var w = t.width(),
             h = t.height();
-        for (var i in data.label) {
-            var item = data.label[i];
+        for (var i = 0; i < length; i++) {
+            var item = data[i];
             selected = i;
-            var _tag_name = item.tag,
-                _tag_2_name = item.property[0],
-                tagObj = returnTagIndex(_tag_name, _tag_2_name),
+            var _tag_name = item.description,
+                // _tag_2_name = item.property[0],
+                // tagObj = returnTagIndex(_tag_name),
                 newLabel = {
-                    x: item.pos[1] * w,
-                    y: item.pos[0] * h,
+                    x: item.x1,
+                    y: item.y1,
                     el: $($('#tpl-area').html()),
                     isExist: true,
-                    w: item.pos[2] * w,
-                    h: item.pos[3] * h,
-                    tag: tagObj.tag_index,
-                    tag_2: tagObj.tag_2_index
+                    w: item.x2 - item.x1,
+                    h: item.y2 - item.y1,
+                    tag: item.description,
                 },
-                color = tagData[tagObj.tag_index].color;
+                color = getRandomColor();
             newLabel.el.attr('id', 'label_' + selected);
             newLabel.el.find('.tag-list').eq(0).append(drawTag(color, _tag_name))
-                .append(drawTag_2(_tag_2_name))
                 .siblings(".ui-resizable-handle")
                 .css('background', color);
             labelList.push(newLabel);
@@ -628,260 +608,26 @@ var draw_tag = function () {
 
 
 function previousPic() {
-    //添加更换背景图片的方法-前翻
-    clearAll();
+    saveIsTagged();
+    if (isWhole)
+        saveWhole();
+    else {
+        saveSquare();
+        //添加更换背景图片的方法-前翻
+        clearAll();
+    }
     getImage(false);
 }
 
 function nextPic() {
-    //添加更换背景图片的方法-后翻
-    clearAll();
+    saveIsTagged();
+    if (isWhole)
+        saveWhole();
+    else {
+        saveSquare();
+        //添加更换背景图片的方法-后翻
+        clearAll();
+    }
     getImage(true);
 
 }
-
-//保存框选
-function saveSquare() {
-    $.ajax({
-        type: "POST",
-        url: "workplace/whole/save",
-        dataType: "json",
-        data: {
-            imageID: idOfImg,
-            labelList: labelList
-        }
-    })
-}
-
-//保存区域
-function savePencil() {
-    $.ajax({
-        type: "POST",
-        url: "workplace/save",
-        dataType: "json",
-        data: {
-            imageID: idOfImg,
-            pencilList: pencilList
-        }
-    })
-}
-
-//保存整体
-function saveWhole() {
-
-    $.ajax({
-        type: "POST",
-        url: "workplace/whole/save",
-        dataType: "json",
-        data: {
-            imageID: idOfImg,
-            labelWhole: labelWhole
-        }
-    })
-
-}
-
-//获取框选
-function getSquare() {
-    $.ajax({
-        type: "GET",
-        url: "workplace/whole/save",
-        dataType: "json",
-        data: {
-            imageID: idOfImg,
-            labelList: labelList
-        }
-    })
-}
-
-//保存区域
-function getPencil() {
-    $.ajax({
-        type: "POST",
-        url: "workplace/save",
-        dataType: "json",
-        data: {
-            imageID: idOfImg,
-            pencilList: pencilList
-        }
-    })
-}
-
-//保存整体
-function getWhole() {
-
-    $.ajax({
-        type: "GET",
-        url: "workplace/whole/save",
-        dataType: "json",
-        data: {
-            imageID: idOfImg,
-            labelWhole: labelWhole
-        }
-    })
-
-}
-
-
-//function saveTagForWhole(imageID, description) {
-//    $.ajax({
-//        type: "POST",
-//        url: "/workplace/whole/save",
-//        dataType: "json",
-//        data: {
-//            imageID: imageID,
-//            description: description
-//        },
-//
-//        success: function (data) {
-//            if (data.success) {
-//                alert("Success saved for whole picture !");
-//            }
-//            else
-//                alert("Error for whole picture !");
-//        },
-//
-//        error: function () {
-//            alert("Network warning for saving whole picture !");
-//        }
-//
-//    });
-//}
-//
-////删除整张照片的标签
-//function deleteTagForWhole(imageID) {
-//
-//    $.ajax({
-//        type: "DELETE",
-//        url: "/workplace/whole/delete",
-//        dataType: "json",
-//        data: {
-//            imageID: imageID
-//        },
-//
-//        success: function (data) {
-//            if (data.success) {
-//                alert("Success deleted for whole picture !");
-//            }
-//            else
-//                alert("Error deleted for whole picture !");
-//        },
-//
-//        error: function () {
-//            alert("Network warning for deleting whole picture !");
-//        }
-//
-//    });
-//}
-//
-////更改整张照片的标签
-//function updateTagForWhole(imageID, description) {
-//    $.ajax({
-//        type: "POST",
-//        url: "/workplace/whole/update",
-//        dataType: "json",
-//        data: {
-//            imageID: imageID,
-//            description: description
-//        },
-//
-//        success: function (data) {
-//            if (data.success) {
-//                alert("Success updated for whole picture !");
-//            }
-//            else
-//                alert("Error updated for whole picture !");
-//        },
-//
-//        error: function () {
-//            alert("Network warning for updating whole picture !");
-//        }
-//
-//    });
-//}
-//
-//
-////保存部分照片的标签
-//function saveTagForPart(imageID, x1, x2, y1, y2, description) {
-//    $.ajax({
-//        type: "POST",
-//        url: "/workplace/part/save",
-//        dataType: "json",
-//        data: {
-//            imageID: imageID,
-//            x1: x1,
-//            x2: x2,
-//            y1: y1,
-//            y2: y2,
-//            description: description
-//        },
-//
-//        success: function (data) {
-//            if (data.success) {
-//                alert("Success saved for part picture !");
-//            }
-//            else
-//                alert("Error savedd for part picture !");
-//        },
-//
-//        error: function () {
-//            alert("Network warning for saving part picture !");
-//        }
-//
-//    });
-//}
-//
-////删除部分照片的标签
-//function deleteTagForPart(imageID) {
-//    $.ajax({
-//        type: "DELETE",
-//        url: "/workplace/part/delete",
-//        dataType: "json",
-//        data: {
-//            imageID: imageID
-//        },
-//
-//        success: function (data) {
-//            if (data.success) {
-//                alert("Success deleted for part picture !");
-//            }
-//            else
-//                alert("Error deleted for part picture !");
-//        },
-//
-//        error: function () {
-//            alert("Network warning for deleting part picture !");
-//        }
-//
-//    });
-//}
-//
-////更新部分照片的标签
-//function updateTagForPart(imageID, x1, x2, y1, y2, description) {
-//    $.ajax({
-//        type: "POST",
-//        url: "/workplace/part/update",
-//        dataType: "json",
-//        data: {
-//            imageID: imageID,
-//            x1: x1,
-//            x2: x2,
-//            y1: y1,
-//            y2: y2,
-//            description: description
-//        },
-//
-//        success: function (data) {
-//            if (data.success) {
-//                alert("Success updated for part picture !");
-//            }
-//            else
-//                alert("Error updated for part picture !");
-//        },
-//
-//        error: function () {
-//            alert("Network warning for updating part picture !");
-//        }
-//
-//    });
-//}

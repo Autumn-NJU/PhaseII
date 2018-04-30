@@ -74,7 +74,7 @@ public class TagPartDaoImpl implements TagPartDao {
     public boolean updateTagPart(String imageID, double x1, double x2, double y1, double y2, String description) {
         ArrayList<String> resultList = new ArrayList<>();
         ArrayList<TagPart> list = init();
-
+        deleteTagPart(imageID);
         for(TagPart tagPart: list){
             if(tagPart.getImageID().equals(imageID) && ((tagPart.getX1() == x1 &&
                     tagPart.getX2() == x2 && tagPart.getY1() == y1 && tagPart.getY2() == y2)) || (tagPart.getX1() == x2 &&
@@ -107,6 +107,16 @@ public class TagPartDaoImpl implements TagPartDao {
             }
         }
         return 0;
+    }
+
+    @Override
+    public List<TagPart> listPartTag(String imageId) {
+        List<TagPart> list = new ArrayList<>();
+        for(TagPart t: init()){
+            if(t.getImageID().equals(imageId))
+                list.add(t);
+        }
+        return list;
     }
 
 

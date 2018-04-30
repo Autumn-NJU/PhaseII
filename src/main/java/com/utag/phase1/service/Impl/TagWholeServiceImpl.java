@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+
 
 @Service
 @Transactional
@@ -56,6 +58,16 @@ public class TagWholeServiceImpl implements TagWholeService {
         }catch (Exception e){
             e.printStackTrace();
             return new Response<>(false, "Fail to get length!");
+        }
+    }
+
+    @Override
+    public Response<String> getTagWhole(String imageId) throws IOException {
+        try{
+            return new Response<>(true, tagWholeDao.listWholeTag(imageId), "Succeed to get whole tag!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "","Fail to get whole tag!");
         }
     }
 

@@ -61,4 +61,12 @@ public interface TagPartDao {
      */
     int getDescriptionLength(String imageID, double x1, double x2, double y1, double y2) throws IOException;
 
+
+    /**
+     * 根据id给出标注结果
+     * @param imageId
+     * @return
+     */
+    List<TagPart> listPartTag(String imageId);
+
 }

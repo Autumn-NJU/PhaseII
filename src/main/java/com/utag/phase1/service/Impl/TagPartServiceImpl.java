@@ -2,6 +2,7 @@ package com.utag.phase1.service.Impl;
 
 import com.utag.phase1.dao.DaoService.TagPartDao;
 import com.utag.phase1.domain.TagPart;
+import com.utag.phase1.model.TagPartModel;
 import com.utag.phase1.service.TagPartService;
 import com.utag.phase1.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +18,14 @@ public class TagPartServiceImpl implements TagPartService {
     private TagPartDao tagPartDao;
 
     @Override
-    public Response<Boolean> saveTagPart(List<TagPart> tagPartList, String imageId){
+    public Response<Boolean> saveTagPart(String imageId, double x1, double x2, double y1, double y2,
+                                         String description){
         try{
-            for(TagPart t: tagPartList) {
-                double x1 = t.getX1();
-                double x2 = t.getX2();
-                double y1 = t.getY1();
-                double y2 = t.getY2();
-                String description = t.getDescription();
-                tagPartDao.saveTagPart(imageId, x1, x2, y1, y2, description);
-            }
-            return new Response<>(true, "Succeed to save user!");
+            tagPartDao.saveTagPart(imageId, x1, x2, y1, y2, description);
+            return new Response<>(true, "Succeed to save tagPart!");
         }catch (Exception e){
             e.printStackTrace();
-            return new Response<>(false, "Fail to save user!");
+            return new Response<>(false, "Fail to save tagPart!");
         }
     }
 
@@ -73,6 +68,17 @@ public class TagPartServiceImpl implements TagPartService {
         Response<Integer> response = new Response<>();
         response.setData(tagPartDao.getDescriptionLength(imageID, x1, x2, y1, y2));
         return response;
+    }
+
+    @Override
+    public Response<List<TagPart>> listPartTag(String imageId) {
+        try{
+            List<TagPart> list = tagPartDao.listPartTag(imageId);
+            return new Response<>(true, list, "Succeed to list part tag!");
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return new Response<>(false, "Fail to list part tag!");
+        }
     }
 
 

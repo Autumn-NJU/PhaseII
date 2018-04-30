@@ -12,6 +12,8 @@ public class FileToolTest {
     public void listPictureName() {
        List<String> list1 = FileTool.listPictureName(1 + "");
        assertEquals(7, list1.size());
-       System.out.println(list1.get(0));
+       for(int i = 0; i < list1.size(); i++) {
+           System.out.println(list1.get(i));
+       }
     }
 }

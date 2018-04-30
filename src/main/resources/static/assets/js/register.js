@@ -3,20 +3,9 @@ $("#register").on('click', function () {
         alert("Please enter the same password");
     else {
 
-        if (typeof UserType == "undefined") {
-            var UserType = {};
-            UserType.Worker = "Worker";
-            UserType.Requester = "Requester";
-        }
-
         var user = $('#username').val();
         var password = $('#password').val();
-        var roleVal = $('#role').val();
-        var role;
-        if (roleVal == UserType.Worker)
-            role = UserType.Worker;
-        else
-            role = UserType.Requester;
+        var role = $('#role').val();
 
         $.ajax({
             type: "POST",
@@ -25,7 +14,7 @@ $("#register").on('click', function () {
             data: {
                 user: user,
                 password: password,
-                role: role
+                userType: role
             },
 
             success: function (data) {

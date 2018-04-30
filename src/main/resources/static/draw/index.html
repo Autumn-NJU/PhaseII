@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="css/component.css"/>
     <link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <link rel="stylesheet" href="css/canvas.css" type="text/css"/>
     <link rel="stylesheet" href="css/jquery.bigcolorpicker.css" type="text/css"/>
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 </head>
@@ -47,7 +46,8 @@
         <!--<li><a href="http://tympanus.net/codrops">Codrops</a></li>-->
         <li><a id="previousPic" class="codrops-icon codrops-icon-prev"
                onclick="previousPic()"><span>Previous Picture</span></a></li>
-        <li><input class="input" type="text" placeholder="Whole tag" id="label-tag"/></li>
+        <li><a class=""><span id="taskId"></span></a></li>
+        <li><input class="input" type="text" placeholder="Input the tag" id="label-tag"/></li>
         <li><a id="check-tag" class="codrops-icon codrops-icon-check">check</a></li>
         <li><a id="nextPic" class="codrops-icon codrops-icon-drop" onclick="nextPic()"><span>Next Picture</span></a>
         </li>
@@ -63,73 +63,73 @@
             </div>
             <!--编辑区域-->
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="x_panel">
-                        <table id="projectTable" class="table table-striped projects">
-                            <thead>
-                            <tr>
-                                <th>Key</th>
-                                <th>Value</th>
-                                <!--<th>Edit</th>-->
-                            </tr>
-                            </thead>
-                            <tbody id="projectMain">
-                            <tr id="attr1">
-                                <td><input id="key1"></td>
-                                <td><input id="val1"></td>
-                                <!--<td>-->
-                                <!--<button id="del1" href="#" class="btn btn-primary btn-xs"><i-->
-                                <!--class="fa fa-folder"></i>Delete-->
-                                <!--</button>-->
-                                <!--</td>-->
-                            </tr>
-                            <tr id="attr2">
-                                <td><input id="key2"></td>
-                                <td><input id="val2"></td>
-                            </tr>
-                            <tr id="attr3">
-                                <td><input id="key3"></td>
-                                <td><input id="val3"></td>
-                            </tr>
-                            <tr id="attr4">
-                                <td><input id="key4"></td>
-                                <td><input id="val4"></td>
-                            </tr>
-                            <tr id="attr5">
-                                <td><input id="key5"></td>
-                                <td><input id="val5"></td>
-                            </tr>
+            <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+            <!--<div class="x_panel">-->
+            <!--<table id="projectTable" class="table table-striped projects">-->
+            <!--<thead>-->
+            <!--<tr>-->
+            <!--<th>Key</th>-->
+            <!--<th>Value</th>-->
+            <!--&lt;!&ndash;<th>Edit</th>&ndash;&gt;-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody id="projectMain">-->
+            <!--<tr id="attr1">-->
+            <!--<td><input id="key1"></td>-->
+            <!--<td><input id="val1"></td>-->
+            <!--&lt;!&ndash;<td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button id="del1" href="#" class="btn btn-primary btn-xs"><i&ndash;&gt;-->
+            <!--&lt;!&ndash;class="fa fa-folder"></i>Delete&ndash;&gt;-->
+            <!--&lt;!&ndash;</button>&ndash;&gt;-->
+            <!--&lt;!&ndash;</td>&ndash;&gt;-->
+            <!--</tr>-->
+            <!--<tr id="attr2">-->
+            <!--<td><input id="key2"></td>-->
+            <!--<td><input id="val2"></td>-->
+            <!--</tr>-->
+            <!--<tr id="attr3">-->
+            <!--<td><input id="key3"></td>-->
+            <!--<td><input id="val3"></td>-->
+            <!--</tr>-->
+            <!--<tr id="attr4">-->
+            <!--<td><input id="key4"></td>-->
+            <!--<td><input id="val4"></td>-->
+            <!--</tr>-->
+            <!--<tr id="attr5">-->
+            <!--<td><input id="key5"></td>-->
+            <!--<td><input id="val5"></td>-->
+            <!--</tr>-->
 
-                            <!--<tr data-id="000002">-->
-                            <!--<td><input></td>-->
-                            <!--<td><input></td>-->
-                            <!--<td>-->
-                            <!--<button data-id="000002" href="#" class="btn btn-primary btn-xs"><i-->
-                            <!--class="fa fa-folder"></i>Delete-->
-                            <!--</button>-->
-                            <!--</td>-->
-                            <!--</tr>-->
+            <!--&lt;!&ndash;<tr data-id="000002">&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button data-id="000002" href="#" class="btn btn-primary btn-xs"><i&ndash;&gt;-->
+            <!--&lt;!&ndash;class="fa fa-folder"></i>Delete&ndash;&gt;-->
+            <!--&lt;!&ndash;</button>&ndash;&gt;-->
+            <!--&lt;!&ndash;</td>&ndash;&gt;-->
+            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
 
-                            <!--<tr data-id="000003">-->
-                            <!--<td><input></td>-->
-                            <!--<td><input></td>-->
-                            <!--<td>-->
-                            <!--<button data-id="000003" href="#" class="btn btn-primary btn-xs"><i-->
-                            <!--class="fa fa-folder"></i>Delete-->
-                            <!--</button>-->
-                            <!--</td>-->
-                            <!--</tr>-->
+            <!--&lt;!&ndash;<tr data-id="000003">&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td><input></td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<button data-id="000003" href="#" class="btn btn-primary btn-xs"><i&ndash;&gt;-->
+            <!--&lt;!&ndash;class="fa fa-folder"></i>Delete&ndash;&gt;-->
+            <!--&lt;!&ndash;</button>&ndash;&gt;-->
+            <!--&lt;!&ndash;</td>&ndash;&gt;-->
+            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
 
 
-                            </tbody>
-                        </table>
-                        <button id="checkSquare" href="#" class="btn btn-primary btn-xs"><i
-                                class="fa fa-folder"></i>check
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <!--</tbody>-->
+            <!--</table>-->
+            <!--<button id="checkSquare" href="#" class="btn btn-primary btn-xs"><i-->
+            <!--class="fa fa-folder"></i>check-->
+            <!--</button>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
         </div>
         <script type="text/html" id="tpl-area">
             <div class="label-area">
@@ -145,6 +145,14 @@
                 <span class="remove-label"></span>
             </div>
         </script>
+        <script type="text/html" id="pencil-area">
+            <div class="label-area">
+                <div class="ui-resizable-handle ui-resizable-line ui-resizable"></div>
+                <div class="ui-resizable-handle ui-resizable-point ui-resizable"></div>
+                <ul class="tag-list"></ul>
+                <span class="remove-label"></span>
+            </div>
+        </script>
         <!--<script type="text/html" id="pencil-area">-->
         <!--<div class="pencil-area">-->
 
@@ -155,19 +163,20 @@
 
 
 </body>
+<script src="../assets/js/cookie.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/stats.js/r17/Stats.min.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/jquery.bigcolorpicker.js"></script>
 <script src="js/mouse.js"></script>
 <script src="js/draw.js"></script>
-<script src="js/storage.js"></script>
 <script src="js/main.js"></script>
-<script src="js/loadPic.js"></script>
 <script src="js/classie.js"></script>
 <script src="js/gnmenu.js"></script>
 <script src="js/modernizr.custom.js"></script>
+<script src="js/loadPic.js"></script>
 <script>
     new gnMenu(document.getElementById('gn-menu'));
+
 </script>
 </html>

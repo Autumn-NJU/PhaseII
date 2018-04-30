@@ -33,9 +33,14 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public Response<Boolean> register(String user, String password, UserType userType)throws IOException{
+    public Response<Boolean> register(String user, String password, String userType)throws IOException{
         System.out.println("Get Register...");
-        return userService.saveUser(user, password, userType);
+        UserType role;
+        if(userType.equals("Requester"))
+            role = UserType.Requester;
+        else
+            role = UserType.Worker;
+        return userService.saveUser(user, password, role);
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
@@ -70,6 +75,17 @@ public class UserController {
     @ResponseBody
     public Response<Integer> getRequetserNum(){
         return userService.getRequesterNum();
+    }
+
+    /**
+     * 根据用户名返回用户信息
+     * @param userName
+     * @return
+     */
+    @RequestMapping(value = "/getUserInfo", method = RequestMethod.GET)
+    @ResponseBody
+    public Response<UserVO> getUserByName(String userName){
+        return userService.getUserByName(userName);
     }
 
 }
